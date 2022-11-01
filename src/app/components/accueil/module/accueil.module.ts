@@ -7,11 +7,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { AccueilComponent } from '../accueil.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NavbarComponent } from '../../navbar/navbar.component';
+
+
+
+
 
 
 @NgModule({
   declarations: [
     AccueilComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +33,10 @@ import { AccueilComponent } from '../accueil.component';
     MatNativeDateModule,
     RouterModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: []

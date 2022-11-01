@@ -20,7 +20,6 @@ import { AccueilModule } from './components/accueil/module/accueil.module';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
   ],
   imports: [
     BrowserModule,
