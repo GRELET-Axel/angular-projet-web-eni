@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './components/accueil/accueil.component';
+import { CampusComponent } from './components/campus/campus.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: 'ville', component: VilleComponent , data:{requiresLogin: true}},
 
    { path: 'accueil', component: AccueilComponent, data:{requiresLogin: true}},
-  // { path: 'campus', component: CampusComponent, data:{requiresLogin: true} },
+  { path: 'campus', component: CampusComponent, data:{requiresLogin: true} },
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent }]
 

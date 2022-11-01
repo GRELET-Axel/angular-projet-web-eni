@@ -7,6 +7,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { CampusComponent } from '../campus.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -23,6 +26,9 @@ import { CampusComponent } from '../campus.component';
     MatNativeDateModule,
     RouterModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: []
