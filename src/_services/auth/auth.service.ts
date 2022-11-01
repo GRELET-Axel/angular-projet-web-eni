@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { subscriptionLogsToBeFn } from 'rxjs/internal/testing/TestScheduler';
-import { Participant } from '../models/Participant';
+import { Participant } from 'src/app/models/Participant';
 
 
 const AUTH_API = +'http://localhost:8000/api/';

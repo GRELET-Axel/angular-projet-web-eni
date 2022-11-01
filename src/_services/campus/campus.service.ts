@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import { campus } from '../models/campus';
+import { Campus } from 'src/app/models/Campus';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -18,14 +18,14 @@ const httpOptions = {
     /**
      * Récupération des campus de l'API
      */
-    public getCampuss(): Observable<campus[]> {
-      return this.httpClient.get<campus[]>('https://localhost:8000/api/campuses.json', httpOptions);
+    public getCampuss(): Observable<Campus[]> {
+      return this.httpClient.get<Campus[]>('https://localhost:8000/api/campuses.json', httpOptions);
     }
 
     /**
    * Supprimer un campus de l'API
    */
-  public deleteCampus(id: number): Observable<campus> {
-    return this.httpClient.delete<campus>('https://localhost:8000/api/campuses/' + id , httpOptions);
+  public deleteCampus(id: number): Observable<Campus> {
+    return this.httpClient.delete<Campus>('https://localhost:8000/api/campuses/' + id , httpOptions);
   }
   }
