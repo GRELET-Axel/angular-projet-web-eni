@@ -10,11 +10,14 @@ import { VilleComponent } from '../ville.component';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
+import { NavbarComponent } from '../../navbar/navbar.component';
+
 
 
 @NgModule({
   declarations: [
     VilleComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
