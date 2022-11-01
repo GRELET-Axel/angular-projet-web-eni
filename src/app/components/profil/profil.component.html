@@ -1,1 +1,28 @@
-<p>profil works!</p>
+<app-navbar></app-navbar>
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profil :</h4>
+                </div>
+                <form method="post" *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Nom :</label><input type="text" class="form-control"  value="{{participant.nom}}" [(ngModel)]="form.nom"></div>
+                    <div class="col-md-6"><label class="labels">Prénom :</label><input type="text" class="form-control" value="{{participant.prenom}}"[(ngModel)]="form.prenom" ></div>
+                    <div class="col-md-12"><label class="labels">Téléphone :</label><input type="text" class="form-control"  value="{{participant.telephone}}" [(ngModel)]="form.telephone"></div>
+                    <div class="col-md-12"><label class="labels">Email :</label><input type="text" class="form-control" value="{{participant.email}}" [(ngModel)]="form.email"></div>
+                    <div class="col-md-12"><label class="labels">Mot de Passe :</label><input type="password" class="form-control" value=""></div>
+                    <div class="col-md-12"><label class="labels">Confirmation : </label><input type="password" class="form-control" value=""></div>
+                    <div class="col-md-12"><label class="labels">Campus :</label><input type="text" class="form-control" value=""></div>
+                  <!--  <div class="col-md-12"><label class="labels">Ma photo :</label><input type="text" class="form-control" value=""></div> -->
+                </div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Enregistrer</button></div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

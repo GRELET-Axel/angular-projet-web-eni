@@ -7,11 +7,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { ProfilComponent } from '../profil.component';
+import { NavbarComponent } from '../../navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
     ProfilComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
