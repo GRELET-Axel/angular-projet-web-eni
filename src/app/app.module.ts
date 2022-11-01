@@ -10,11 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterModule } from './components/register/module/register.module';
-import { NavbarModule } from './components/navbar/module/navbar.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,6 @@ import { NavbarModule } from './components/navbar/module/navbar.module';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    NavbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
