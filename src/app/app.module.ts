@@ -12,11 +12,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterModule } from './components/register/module/register.module';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginModule } from './components/login/module/register.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NavbarComponent
   ],
   imports: [
@@ -29,6 +29,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
