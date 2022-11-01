@@ -4,10 +4,14 @@ import { AccueilComponent } from './components/accueil/accueil.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { RegisterComponent } from './components/register/register.component';
+import { VilleComponent } from './components/ville/ville.component';
 
 const routes: Routes = [  
+
    { path: 'profil', component: ProfilComponent, data:{requiresLogin: true} },
-  // { path: 'ville', component: VilleListComponent , data:{requiresLogin: true}},
+
+  { path: 'ville', component: VilleComponent , data:{requiresLogin: true}},
+
    { path: 'accueil', component: AccueilComponent, data:{requiresLogin: true}},
   // { path: 'campus', component: CampusComponent, data:{requiresLogin: true} },
   { path: '', component: LoginComponent },
