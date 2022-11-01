@@ -10,9 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterModule } from './components/register/module/register.module';
-import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginModule } from './components/login/module/register.module';
+import { LoginModule } from './components/login/module/login.module';
 
 @NgModule({
   declarations: [
