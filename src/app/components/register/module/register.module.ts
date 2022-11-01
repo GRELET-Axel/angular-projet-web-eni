@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from '../register.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -18,13 +18,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatIconModule,
     MatButtonModule,
     MatOptionModule,
     MatNativeDateModule,
     RouterModule,
     MatFormFieldModule,
-
   ],
   providers: [],
   bootstrap: []
