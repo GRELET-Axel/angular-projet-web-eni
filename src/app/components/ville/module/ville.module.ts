@@ -7,6 +7,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { VilleComponent } from '../ville.component';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -23,6 +26,9 @@ import { VilleComponent } from '../ville.component';
     MatNativeDateModule,
     RouterModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: []
