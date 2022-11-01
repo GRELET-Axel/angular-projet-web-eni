@@ -1,8 +1,6 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { Participant } from 'src/app/models/Participant';
 import { AuthService } from 'src/_services/auth/auth.service';
 import { TokenStorageService } from 'src/_services/auth/token-storage.service';
 
@@ -12,13 +10,6 @@ import { TokenStorageService } from 'src/_services/auth/token-storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private localstorageKeys = {
-    isLoggedIn: "isLoggedIn"
-  }
-
-  
-  isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(coerceBooleanProperty(localStorage.getItem(this.localstorageKeys.isLoggedIn)));
-  loggedUser$: BehaviorSubject<Participant | null> = new BehaviorSubject<Participant | null>(null);
 
   form: any = {
     username: null,
@@ -50,7 +41,6 @@ export class LoginComponent implements OnInit {
         if(data.code == "200" && data.token && data.user_id){
           this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data.user_id);
-          localStorage.setItem("isLoggedIn","true");
           //this.isLoginFailed = false;
          // this.isLoggedIn = true;
         }
