@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { first } from 'rxjs';
+import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-accueil',
@@ -16,6 +17,7 @@ export class AccueilComponent implements OnInit {
 
   public displayedColumns = ['nomSortie', 'dateSortie', 'dateCloture', 'inscritPlace', 'etat', 'inscrit', 'organisateur', 'actions'];
   sorties: Sortie[] = [];
+  currentDateFormated: string = "";
   public dataSource = new MatTableDataSource<Sortie>();
   
 
@@ -26,10 +28,13 @@ export class AccueilComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
   constructor(
-    private sortieService: SortieService,
-  ) { }
+    private sortieService: SortieService
+    ) { }
 
   ngOnInit(): void {
+    
+    const date = new Date();
+    this.currentDateFormated = date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear();
     this.lister();
   }
 

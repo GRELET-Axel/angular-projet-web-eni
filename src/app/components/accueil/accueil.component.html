@@ -1,32 +1,39 @@
+<div>
+  
+<div style="margin-left: 85%;font-size: 20px">
+  <p>Date du jour : {{ currentDateFormated }}</p>
+  <p>Participant : </p>
+</div>
+</div>
 <div class="liste-page" id="lipVilleList" >
     <div fxLayout="row nowrap" fxLayoutAlign="center center" class="btn-ajouter">
-      <button id="btnCreerVille" type="button" mat-raised-button class="btn-hover" (click)="ajouter()">
+      <button id="create-sortie" type="button" mat-raised-button class="btn-hover" (click)="ajouter()">
         <mat-icon class="size-14">library_add</mat-icon>
-        {{ 'Ajouter une ville' }}
+        {{ 'Ajouter une Sortie' }}
       </button>
-    </div>
+    </div>$
     <mat-label>Filter les villes</mat-label>
     <input matInput (keyup)="applyFilter($event)" #input>
   
-    <table id="tableVilleList" mat-table [dataSource]="dataSource" matSort matSortActive="nomVille" matSortDirection="asc">
+    <table id="listSortie" mat-table [dataSource]="dataSource" matSort matSortActive="nomVille" matSortDirection="asc">
       <ng-container matColumnDef='nomSortie'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">Nom de la sortie</th> 
-        <td mat-cell id="mcenomSortie" *matCellDef="let element"> {{element.nomSortie}} </td>
+        <td mat-cell id="mcenomSortie" *matCellDef="let element"> {{element.nom}} </td>
       </ng-container>
   
       <ng-container matColumnDef='dateSortie'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">Date de la sortie</th>
-        <td mat-cell id="mcedateSortie" *matCellDef="let element"> {{element.dateHeureDebut.substr(0,10)}} </td>
+        <td mat-cell id="mcedateSortie" *matCellDef="let element"> {{element.dateHeureDebut.split('T')[0]}} {{element.dateHeureDebut.split('T')[1].substr(0,8)}}</td>
       </ng-container>
 
       <ng-container matColumnDef='dateCloture'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">Clôture</th> 
-        <td mat-cell id="mcedateCloture" *matCellDef="let element"> {{element.Cloture}} </td>
+        <td mat-cell id="mcedateCloture" *matCellDef="let element"> {{element.dateLimiteInscription.substr(0,10)}} </td>
       </ng-container>
   
       <ng-container matColumnDef='inscritPlace'>
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">inscript/places</th>
-        <td mat-cell id="mcecodePostal" *matCellDef="let element"> {{element.inscritplace}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">inscrit/Nbplaces</th>
+        <td mat-cell id="mcecodePostal" *matCellDef="let element">{{element.participants.length?element.participants.length:0}} / {{element.nbInscriptionsMax}} </td>
       </ng-container>
 
       <ng-container matColumnDef='etat'>
@@ -41,7 +48,7 @@
 
       <ng-container matColumnDef='organisateur'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">Organisateur</th> -->
-        <td mat-cell id="mcenomVille" *matCellDef="let element"> {{element.organisateur}} </td>
+        <td mat-cell id="mcenomVille" *matCellDef="let element">{{element.participant.prenom.toUpperCase()}} {{element.participant.nom.substr(0,1)+'.'}} </td>
       </ng-container>
   
       <ng-container matColumnDef="actions">
