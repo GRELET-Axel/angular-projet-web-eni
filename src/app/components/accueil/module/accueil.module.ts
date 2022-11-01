@@ -11,7 +11,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { NavbarComponent } from '../../navbar/navbar.component';
 
 
 
@@ -21,7 +20,6 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 @NgModule({
   declarations: [
     AccueilComponent,
-    NavbarComponent
   ],
   imports: [
     BrowserModule,

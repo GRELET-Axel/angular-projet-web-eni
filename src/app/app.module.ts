@@ -15,10 +15,12 @@ import {VilleModule} from './components/ville/module/ville.module';
 import { CampusModule } from './components/campus/module/campus.module';
 import { ProfilModule } from './components/profil/module/profil.module';
 import { AccueilModule } from './components/accueil/module/accueil.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +33,10 @@ import { AccueilModule } from './components/accueil/module/accueil.module';
     MatIconModule,
     MatSidenavModule,
     LoginModule, 
-    VilleModule,
     CampusModule,
     ProfilModule,
-    AccueilModule
+    AccueilModule, 
+    VilleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
