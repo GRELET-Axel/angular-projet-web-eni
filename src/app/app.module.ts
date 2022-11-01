@@ -12,11 +12,19 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterModule } from './components/register/module/register.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginModule } from './components/login/module/login.module';
+import { VilleComponent } from './components/ville/ville.component';
+import { CampusComponent } from './components/campus/campus.component';
+import { AccueilComponent } from './components/accueil/accueil.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    VilleComponent,
+    CampusComponent,
+    AccueilComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
