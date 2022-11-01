@@ -12,19 +12,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterModule } from './components/register/module/register.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginModule } from './components/login/module/login.module';
-import { VilleComponent } from './components/ville/ville.component';
-import { CampusComponent } from './components/campus/campus.component';
-import { AccueilComponent } from './components/accueil/accueil.component';
-import { ProfilComponent } from './components/profil/profil.component';
+import { VilleModule } from './components/ville/module/ville.module';
+import { CampusModule } from './components/campus/module/campus.module';
+import { ProfilModule } from './components/profil/module/profil.module';
+import { AccueilModule } from './components/accueil/module/accueil.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    VilleComponent,
-    CampusComponent,
-    AccueilComponent,
-    ProfilComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +32,11 @@ import { ProfilComponent } from './components/profil/profil.component';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    LoginModule
+    LoginModule, 
+    VilleModule,
+    CampusModule,
+    ProfilModule,
+    AccueilModule
   ],
   providers: [],
   bootstrap: [AppComponent]
