@@ -55,7 +55,7 @@
   
       <span>Logo Sortir.com</span>
       <div class="ml-auto"></div>
-      <ng-container>
+      <ng-container *ngIf="isLogged">
         <ng-container *ngTemplateOutlet="nav_content"></ng-container>
       </ng-container>
     </mat-toolbar>
@@ -65,15 +65,14 @@
 
 
 <ng-template #nav_content>
+  
   <ng-container *ngFor="let navLink of navLinks">
+    <ng-container *ngIf="!isAdmin() && !navLink.adminRequired">
     <button mat-button [routerLink]="navLink.link" [routerLinkActiveOptions]="{exact: true}"
       routerLinkActive="active">{{navLink.label}}</button>
+    </ng-container>
   </ng-container>
-  <ng-container *ngIf="(authService.isLoggedIn$.value ); else login">
+  <ng-container>
    <button (click)="logout()" routerLinkActive="active" mat-button>Se déconnecter</button>
   </ng-container>
-  <ng-template #login>
-    <button mat-button [routerLink]="'/login'" [routerLinkActiveOptions]="{exact: true}"
-      routerLinkActive="active">Login</button>
-  </ng-template>
 </ng-template>

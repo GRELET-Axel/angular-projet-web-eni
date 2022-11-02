@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/_services/auth/auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { TokenStorageService } from '../_services/auth/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,19 +13,29 @@ import { TokenStorageService } from '../_services/auth/token-storage.service';
 
 export class AppComponent {
   isLogged: boolean = false;
-  constructor(public authService: AuthService,public tokenStorage: TokenStorageService){
-    if(this.tokenStorage.getToken()){
-      this.isLogged = true;
-    }
+  roles: Array<any> = [];
+  constructor(private router: Router, public authService: AuthService,public tokenStorage: TokenStorageService){
+
+    this.authService.isLoggedIn.subscribe(value=>{
+      this.isLogged = value
+    })
+
+    let token = this.tokenStorage.getToken()?this.tokenStorage.getToken():null
+    let tokenDecoded = token != null?Buffer.from(token.split('.')[1], 'base64').toString('binary'):''
+      
+    this.roles = JSON.parse(tokenDecoded).roles
   }
   
   title = 'front-web-projet-eni';
 
 //  logincomponent: LoginComponent | undefined;
+
+  
+
   navLinks: { link: string, label: string, adminRequired: boolean }[] = [{
     link: "/",
     label: "Accueil",
-    adminRequired: true
+    adminRequired: false
   }, {
     link: "ville",
     label: "Ville",
@@ -36,16 +47,29 @@ export class AppComponent {
   }, {
     link: "profil",
     label: "Mon profil",
-    adminRequired: true
+    adminRequired: false
   }
   ]
+
+
+
+
+
+isAdmin(){
+  if(this.roles.includes('ROLE_ADMIN')){
+    return true
+  }
+  return false
+}
   
+
   logout() {
-    this.authService.isLoggedIn$.next(false);
+    this.authService.isLoggedIn.next(false);
+    this.isLogged = false;
     this.tokenStorage.signOut()
     localStorage.setItem("isLoggedIn", "false");
     location.reload();
-    //this.loggedUser$.next(null)
+    window.location.href="/login"
   }
 }
 

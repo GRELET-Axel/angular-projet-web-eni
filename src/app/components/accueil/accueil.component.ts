@@ -10,6 +10,9 @@ import { LoginComponent } from '../login/login.component';
 import { ProfilService } from 'src/_services/profil/profil.service';
 import { TokenStorageService } from 'src/_services/auth/token-storage.service';
 import { Participant } from '../../models/Participant';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../_services/auth/auth.service';
 
 @Component({
   selector: 'app-accueil',
@@ -28,31 +31,43 @@ export class AccueilComponent implements OnInit {
   currentUserSorties: Sortie[] = [];
   roles: Array<any> = [];
   public dataSource = new MatTableDataSource<Sortie>();
-  
+  isLoggedIn: boolean = false;
+  isLogged: boolean = true;
 
   sortFunction: ((data: Sortie[], sort: MatSort) => Sortie[]) | undefined;
   titre = '';
 
   @ViewChild(MatSort) sort: MatSort | undefined;
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-
-  constructor(
   
+  constructor(
+
+    private router: Router,
     private sortieService: SortieService,
     private profilService: ProfilService,
-    private tokenStorageService: TokenStorageService
-    ) { }
+    private authService: AuthService,
+    private tokenStorageService: TokenStorageService,
+    ) { 
+      this.authService.isLoggedIn.subscribe(value=>{
+        this.isLogged = value
+      })
+     }
 
   logincomponent: LoginComponent | undefined;
   ngOnInit(): void {
+
+    if(!this.tokenStorageService.getToken()){
+      this.router.navigate(['login'])
+    }
+
+    console.log(this.isLogged)
+
     let token = this.tokenStorageService.getToken()?this.tokenStorageService.getToken():null
     let tokenDecoded = token != null?Buffer.from(token.split('.')[1], 'base64').toString('binary'):''
     
     this.roles = JSON.parse(tokenDecoded).roles
-    //localStorage.setItem("isLoggedIn", "false");  
 
-   // this.isLoggedInhere$ = this.logincomponent?.isLoggedIn$;
-    //localStorage.setItem("isLoggedIn", 'false')
+    
 
     const user_id = this.tokenStorageService.getUser();
     const date = new Date();

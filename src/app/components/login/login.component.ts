@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
-    this.authService.isLoggedIn$.next(false);
+    this.authService.isLoggedIn.next(false);
     localStorage.setItem("isLoggedIn", "false");
     location.reload();
     //this.loggedUser$.next(null)
@@ -52,11 +52,8 @@ export class LoginComponent implements OnInit {
         if(data.code == "200" && data.token && data.user_id){
           this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data.user_id);
-          //this.isLoginFailed = false;
-         // this.isLoggedIn = true;
-         localStorage.setItem("isLoggedIn",'true')
-       //accueil  
-       this.router.navigate(['/']);
+          localStorage.setItem("isLoggedIn",'true')
+          window.location.href="/"
         }
         else{
           //TODO Invalide password/email, afficher une erreure

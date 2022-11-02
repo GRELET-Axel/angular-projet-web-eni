@@ -19,7 +19,7 @@ export class AuthService {
   private localstorageKeys = {
     isLoggedIn: "isLoggedIn"
   }
-  public isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(coerceBooleanProperty(localStorage.getItem(this.localstorageKeys.isLoggedIn)));
+  public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(coerceBooleanProperty(localStorage.getItem(this.localstorageKeys.isLoggedIn)));
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
