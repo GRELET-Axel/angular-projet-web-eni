@@ -44,7 +44,9 @@ export class AccueilComponent implements OnInit {
   logincomponent: LoginComponent | undefined;
   ngOnInit(): void {
 
-    this.isLoggedInhere$ = this.logincomponent?.isLoggedIn$;
+    //localStorage.setItem("isLoggedIn", "false");  
+
+   // this.isLoggedInhere$ = this.logincomponent?.isLoggedIn$;
     //localStorage.setItem("isLoggedIn", 'false')
 
     const user_id = this.tokenStorageService.getUser();

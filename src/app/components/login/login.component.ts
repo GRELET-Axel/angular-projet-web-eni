@@ -11,11 +11,9 @@ import { TokenStorageService } from 'src/_services/auth/token-storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-private localstorageKeys = {
-  isLoggedIn: "isLoggedIn"
-}
 
-isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(coerceBooleanProperty(localStorage.getItem(this.localstorageKeys.isLoggedIn)));
+
+
   form: any = {
     username: null,
     password: null
@@ -38,7 +36,7 @@ isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(coerceBoole
   }
 
   logout() {
-    this.isLoggedIn$.next(false);
+    this.authService.isLoggedIn$.next(false);
     localStorage.setItem("isLoggedIn", "false");
     location.reload();
     //this.loggedUser$.next(null)

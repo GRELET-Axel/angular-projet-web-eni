@@ -48,7 +48,7 @@
 
       <ng-container matColumnDef='organisateur'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">Organisateur</th> -->
-        <td mat-cell id="mcenomVille" *matCellDef="let element">{{element.participant.prenom.toUpperCase()}} {{element.participant.nom.substr(0,1)+'.'}} </td>
+        <td mat-cell id="mcenomVille" *matCellDef="let element">{{element.participant.prenom}} {{element.participant.nom}} </td>
       </ng-container>
   
       <ng-container matColumnDef="actions">
