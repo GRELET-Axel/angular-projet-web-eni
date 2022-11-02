@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/_services/auth/auth.service';
 import { LoginComponent } from './components/login/login.component';
 
 @Component({
@@ -9,9 +10,10 @@ import { LoginComponent } from './components/login/login.component';
 
 
 export class AppComponent {
-  constructor(/* public loginComponents: LoginComponent*/){
+  constructor(public authService: AuthService){
 
   }
+  
   title = 'front-web-projet-eni';
 
 //  logincomponent: LoginComponent | undefined;
@@ -27,19 +29,7 @@ export class AppComponent {
   }, {
     link: "profil",
     label: "Mon profil"
-  },
-  {
-    link: "login",
-    label: "Deconnexion"
   }
- // {
- //   link: "profil",
- //   label: "Mon profil"
- // }
-  //{
-  // link: '/participant/'+this.loginService.loggedUser$.value?.participantId,
-   // label: "Mon profil"
-  //}
   ]
   
 }

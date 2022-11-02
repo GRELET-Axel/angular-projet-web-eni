@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { subscriptionLogsToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { Participant } from 'src/app/models/Participant';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 
 const AUTH_API = +'http://localhost:8000/api/';
@@ -15,6 +16,10 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  private localstorageKeys = {
+    isLoggedIn: "isLoggedIn"
+  }
+  public isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(coerceBooleanProperty(localStorage.getItem(this.localstorageKeys.isLoggedIn)));
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {

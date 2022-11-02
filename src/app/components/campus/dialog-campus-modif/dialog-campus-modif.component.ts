@@ -34,11 +34,15 @@ export class DialogCampusModifComponent implements OnInit {
       if(this.modifierCampusForm.valid){
           let campus: Campus = this.modifierCampusForm.value;  
           campus.id = this.editData.id;
-          this.campusService.updateCampus(campus).subscribe({
+          console.log(campus)
+          this.campusService.updateCampus(campus.id, campus.nom).subscribe({
           next:()=>{
               this.dialogRef.close('mod');  
           },
         })
+        console.log(campus)
+
       }
-    }
+      
+     }
   }

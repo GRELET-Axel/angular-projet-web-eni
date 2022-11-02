@@ -43,7 +43,7 @@ export class VilleService {
      }, httpOptions);
     }
 
-    public updateVille(id : number, nom: string, codePostal: string): Observable<Ville> {
+    public updateVille(id : number, nom: string, codePostal: number): Observable<Ville> {
       return this.httpClient.put<Ville>('https://localhost:8000/api/villes/' + id,{
         nom,
         codePostal

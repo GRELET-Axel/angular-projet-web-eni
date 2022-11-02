@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { DialogCampusComponent } from '../dialog-campus/dialog-campus.component';
 import { DialogCampusModifComponent } from '../dialog-campus-modif/dialog-campus-modif.component';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { DialogCampusModifComponent } from '../dialog-campus-modif/dialog-campus
     MatButtonModule,
     MatFormFieldModule,
     MatRippleModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: []
