@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { LoginComponent } from '../login/login.component';
 
@@ -8,13 +9,24 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isLoggedInhere$: BehaviorSubject<boolean> | undefined;//= new BehaviorSubject<boolean>(coerceBooleanProperty(localStorage.getItem(this.localstorageKeys.isLoggedIn)));
+  isLoggedInhere$: BehaviorSubject<boolean> | undefined;
 
-  constructor() { }
+  constructor(private router:Router) { }
 logincomponent: LoginComponent | undefined;
   ngOnInit(): void {
-
+    
     this.isLoggedInhere$ = this.logincomponent?.isLoggedIn$;
   }
+  isActive() {
+    return !this.logincomponent?.isLoggedIn$;
+    }
+
+    clickdeco(){
+      
+      localStorage.setItem("isLoggedIn",'false')
+      
+      this.router.navigate(['/login']);
+
+    }
 
 }

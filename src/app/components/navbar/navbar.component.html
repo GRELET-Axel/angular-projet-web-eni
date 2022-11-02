@@ -3,8 +3,10 @@
 <ul>
     <li><a href="ville">Ville</a></li>
     <li><a href="campus">Campus</a></li>
+  
     <li><a href="">Accueil</a></li>
-    <li><a hidden="{{!isLoggedInhere$}}" href="profil">Mon profil</a></li>
-    <li><a hidden="{{isLoggedInhere$}}" href="login">Login</a></li>
-    <li><a hidden="{{!isLoggedInhere$}}" href="login">Deconnexion</a></li>
+    
+    <li><a [hidden]="isActive()"  href="profil">Mon profil</a></li>
+    <li><a hidden="{{!isActive()}}" href="login">Login</a></li>
+    <li><a hidden="{{isActive()}}" onclick="clickdeco">Deconnexion</a></li>
   </ul>

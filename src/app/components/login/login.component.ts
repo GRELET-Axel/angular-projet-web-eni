@@ -29,6 +29,7 @@ isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(coerceBoole
 
   ngOnInit(): void {
     
+    //localStorage.setItem("isLoggedIn",'false')
    if(this.tokenStorage.getToken()){
     this.tokenStorage.signOut();
     // TODO requetes api pour kill le token

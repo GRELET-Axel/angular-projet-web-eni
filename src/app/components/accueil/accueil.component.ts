@@ -4,8 +4,9 @@ import { SortieService } from '../../../_services/sortie/sortie.service';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { first } from 'rxjs';
+import { BehaviorSubject, first } from 'rxjs';
 import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-accueil',
@@ -15,6 +16,7 @@ import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 export class AccueilComponent implements OnInit {
 
 
+  isLoggedInhere$: BehaviorSubject<boolean> | undefined;
   public displayedColumns = ['nomSortie', 'dateSortie', 'dateCloture', 'inscritPlace', 'etat', 'inscrit', 'organisateur', 'actions'];
   sorties: Sortie[] = [];
   currentDateFormated: string = "";
@@ -29,10 +31,14 @@ export class AccueilComponent implements OnInit {
 
   constructor(
     private sortieService: SortieService
-    ) { }
+    ) { 
+     
+  }
 
+  logincomponent: LoginComponent | undefined;
   ngOnInit(): void {
-    
+    this.isLoggedInhere$ = this.logincomponent?.isLoggedIn$;
+    //localStorage.setItem("isLoggedIn", 'false')
     const date = new Date();
     this.currentDateFormated = date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear();
     this.lister();
