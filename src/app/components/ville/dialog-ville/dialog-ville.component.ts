@@ -37,7 +37,7 @@ export class DialogVilleComponent implements OnInit {
       if (this.creerVilleForm.valid) {
           let villes:any = this.creerVilleForm.value;  
           console.log(villes)
-          this.villeService.addVille(villes.nom, villes.codePostal).subscribe({
+          this.villeService.addVille(villes.nom, parseInt(villes.codePostal,10)).subscribe({
               next:()=>{
                   this.dialogRef.close('add');  
               },

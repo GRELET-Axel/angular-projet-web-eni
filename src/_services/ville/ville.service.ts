@@ -36,7 +36,7 @@ export class VilleService {
     /**
    * Ajouter une ville de l'API
    */
-    public addVille(nom: string, codePostal: string): Observable<Ville> {
+    public addVille(nom: string, codePostal: number): Observable<Ville> {
      return this.httpClient.post<Ville>('https://localhost:8000/api/villes',{
       nom,
       codePostal
