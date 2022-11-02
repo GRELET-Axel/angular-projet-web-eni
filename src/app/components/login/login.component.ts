@@ -1,6 +1,7 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/_services/auth/auth.service';
 import { TokenStorageService } from 'src/_services/auth/token-storage.service';
 
@@ -10,7 +11,11 @@ import { TokenStorageService } from 'src/_services/auth/token-storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+private localstorageKeys = {
+  isLoggedIn: "isLoggedIn"
+}
 
+isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(coerceBooleanProperty(localStorage.getItem(this.localstorageKeys.isLoggedIn)));
   form: any = {
     username: null,
     password: null
@@ -43,6 +48,9 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveUser(data.user_id);
           //this.isLoginFailed = false;
          // this.isLoggedIn = true;
+         localStorage.setItem("isLoggedIn",'true')
+       //accueil  
+       this.router.navigate(['/']);
         }
         else{
           //TODO Invalide password/email, afficher une erreure
@@ -55,7 +63,6 @@ export class LoginComponent implements OnInit {
 
     );
 
-    this.router.navigate(['/accueil']);
   }
 
 }
