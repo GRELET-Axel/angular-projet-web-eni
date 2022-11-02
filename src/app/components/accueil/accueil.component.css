@@ -4,3 +4,32 @@ table{width: 100%}
     margin-top: 2rem;
     font-size: 20px;
 }
+
+.delete-icon{
+    color: red;
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.delete-icon svg{
+    fill: red;
+}
+
+.cancel-icon{
+    color: red;
+}
+.cancel-icon svg{
+    fill: red;
+}
+
+.sub-icon{
+    color: green;
+}
+.sub-icon svg{
+    fill: green;
+}
+
+.edit-icon{
+    color: orange;
+}
+.edit-icon svg{
+    fill: orange;
+}

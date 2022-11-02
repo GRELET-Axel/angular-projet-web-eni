@@ -8,6 +8,7 @@ import { first } from 'rxjs';
 import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { TokenStorageService } from '../../../_services/auth/token-storage.service';
 import { ProfilService } from '../../../_services/profil/profil.service';
+import { Participant } from '../../models/Participant';
 
 @Component({
   selector: 'app-accueil',
@@ -21,6 +22,7 @@ export class AccueilComponent implements OnInit {
   sorties: Sortie[] = [];
   currentDateFormated: string = "";
   nameUser: string = "";
+  currentUserId: number = 0;
   public dataSource = new MatTableDataSource<Sortie>();
   
 
@@ -34,7 +36,6 @@ export class AccueilComponent implements OnInit {
     private sortieService: SortieService,
     private profilService: ProfilService,
     private tokenStorageService: TokenStorageService
-
     ) { }
 
   ngOnInit(): void {
@@ -44,6 +45,7 @@ export class AccueilComponent implements OnInit {
     this.profilService.getUsers(user_id)
       .subscribe(
         (value: any) => {
+          this.currentUserId = value.id
           this.nameUser = value.prenom + '.' + value.nom.substr(0,1).toUpperCase()
         });
     this.lister();
@@ -54,12 +56,39 @@ export class AccueilComponent implements OnInit {
       .pipe(first())
       .subscribe(
         value => {
-          console.log(value)
           this.sorties = value
           this.dataSource.data = this.sorties;
           console.log(this.sorties)
         })
 }
+
+isParticipant(participants: Array<any>) : boolean
+{
+  let isSub = false
+  if(participants.length > 0){
+    participants.forEach(value => {
+      if(value.id === this.currentUserId){
+        isSub = true;
+      }else{
+        isSub = false;
+      }
+    });
+  }
+    return isSub;
+}
+
+isOrganizer(participant: Participant) : boolean
+{
+  let isOrga = false
+  if(participant.id === this.currentUserId){
+    isOrga = true
+  }
+  return isOrga
+}
+
+  inscription(elem: Element) {
+  console.log(elem)
+  } 
 
   supprimer(campus: Sortie) {
     // this.campusService.deleteCampus(campus.id).subscribe(

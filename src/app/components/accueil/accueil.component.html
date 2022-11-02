@@ -11,7 +11,7 @@
         <mat-icon class="size-14">library_add</mat-icon>
         {{ 'Ajouter une Sortie' }}
       </button>
-    </div>$
+    </div>
     <mat-label>Filter les villes</mat-label>
     <input matInput (keyup)="applyFilter($event)" #input>
   
@@ -43,7 +43,7 @@
   
       <ng-container matColumnDef='inscrit'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">Inscrit</th>
-        <td mat-cell id="mcecodePostal" *matCellDef="let element"> {{element.inscrit}} </td>
+        <td mat-cell id="mcecodePostal" *matCellDef="let element"><mat-icon class="sub-icon"> {{isParticipant(element.participants)?'done_outline':''}} </mat-icon></td>
       </ng-container>
 
       <ng-container matColumnDef='organisateur'>
@@ -52,15 +52,23 @@
       </ng-container>
   
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> {{ 'Actions' }} </th>
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button id="btnModifierVille" type="button"
-            (click)="modifier(element)" matTooltip="{{ 'Modifier une ville' }}">
-            <mat-icon>edit</mat-icon>
+          <button *ngIf='element.nbInscriptionsMax > element.participants.length && !isParticipant(element.participants)' mat-icon-button id="btnInscrire" type="button"
+            (click)="inscription(element)" matTooltip="{{ 'S\'inscrire' }}">
+            <mat-icon class="subout-icon">exit_to_app</mat-icon>
           </button>
-          <button mat-icon-button id="btnSupprimerVille" type="button"
-            (click)="supprimer(element)" matTooltip="{{ 'Supprimer une ville' }}">
-            <mat-icon>delete</mat-icon>
+          <button *ngIf='element.nbInscriptionsMax > element.participants.length && isParticipant(element.participants)' mat-icon-button id="btnInscrire" type="button"
+            (click)="inscription(element)" matTooltip="{{ 'Se désister' }}">
+            <mat-icon class="cancel-icon">cancel_presentation</mat-icon>
+          </button>
+          <button *ngIf='element.etat.libelle === "Créée" && isOrganizer(element.participant)' mat-icon-button id="btnModifierVille" type="button"
+            (click)="modifier(element)" matTooltip="{{ 'Modifier une sortie' }}">
+            <mat-icon class="edit-icon">edit</mat-icon>
+          </button>
+          <button *ngIf='isOrganizer(element.participant)' mat-icon-button id="btnSupprimerVille" type="button"
+            (click)="supprimer(element)" matTooltip="{{ 'Supprimer une sortie' }}">
+            <mat-icon class="delete-icon">delete</mat-icon>
           </button>
         </td>
       </ng-container>

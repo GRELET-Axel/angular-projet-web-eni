@@ -18,6 +18,7 @@ export class Sortie {
     public location: Location,
     public campus: Campus,
     public organizer: Participant,
+    public participants: Participant[],
   ) { }
 }
 

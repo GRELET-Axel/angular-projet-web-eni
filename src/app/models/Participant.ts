@@ -2,6 +2,7 @@
   export class Participant {
     
     constructor(
+        public id: number,
         public prenom: string ,
         public nom: string ,
         public telephone: string,

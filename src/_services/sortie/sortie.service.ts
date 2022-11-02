@@ -33,10 +33,19 @@ export class SortieService {
     return this.httpClient.delete<Sortie>('https://localhost:8000/api/sorties/' + idSortie , httpOptions);
   }
 
-    /**
+  /**
    * Supprimer une sortie de l'API
-   */
+  */
     public addSortie(): Observable<Sortie> {
      return this.httpClient.post<Sortie>('https://localhost:8000/api/sorties/', httpOptions);
     }
+
+     /**
+   * edit participant pour inscription
+  */
+      public inscriptionSortie(idUser : number,inscrit: string): Observable<any> {
+        return this.httpClient.put<any>('https://localhost:8000/api/participants/'+idUser,{
+          inscrit //url api vers sorties/{id}
+        }, httpOptions);
+      }
 }
