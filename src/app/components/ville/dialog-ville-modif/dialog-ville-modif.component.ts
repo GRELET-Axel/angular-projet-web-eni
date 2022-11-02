@@ -22,28 +22,31 @@ export class DialogVilleModifComponent implements OnInit {
   
   ngOnInit(): void {
       this.modifierVilleForm = this.formBuilder.group({
-          nomVille: [''],
+          nom: [''],
           codePostal: ['']
       });
 
       if(this.editData){
-          this.modifierVilleForm.controls['nomVille'].setValue(this.editData.nom);
+          this.modifierVilleForm.controls['nom'].setValue(this.editData.nom);
           this.modifierVilleForm.controls['codePostal'].setValue(this.editData.codePostal);
       }
   }
 
   modifierVille():void{
       if(this.modifierVilleForm.valid){
-          let ville: Ville = this.modifierVilleForm.value;  
+        let ville: Ville = this.modifierVilleForm.value;  
           ville.id = this.editData.id;
-          this.villeService.updateVille(ville).subscribe({
+          console.log(ville);
+          this.villeService.updateVille(ville.id, ville.nom, ville.codePostal).subscribe({
           next:()=>{
+              console.log(ville)
               this.dialogRef.close('mod');  
           },
           error:()=>{
               this.dialogRef.close('mod');
           }
           });
+          console.log(ville)
       }
   }
 

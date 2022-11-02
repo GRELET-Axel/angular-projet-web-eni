@@ -21,6 +21,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { CommonModule } from '@angular/common';
 import { DialogVilleComponent } from '../dialog-ville/dialog-ville.component';
 import { DialogVilleModifComponent } from '../dialog-ville-modif/dialog-ville-modif.component';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -54,6 +55,7 @@ import { DialogVilleModifComponent } from '../dialog-ville-modif/dialog-ville-mo
     MatButtonModule,
     MatFormFieldModule,
     MatRippleModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: []

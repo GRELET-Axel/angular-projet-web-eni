@@ -17,7 +17,7 @@ const httpOptions = {
 export class VilleService {
 
   constructor(private httpClient: HttpClient) { }
-
+  ville !: Ville
 
   /**
    * Récupération des villes de l'API
@@ -34,13 +34,19 @@ export class VilleService {
   }
 
     /**
-   * Supprimer une ville de l'API
+   * Ajouter une ville de l'API
    */
-    public addVille(ville: Ville): Observable<Ville> {
-     return this.httpClient.post<Ville>('https://localhost:8000/api/villes/', httpOptions);
+    public addVille(nom: string, codePostal: number): Observable<Ville> {
+     return this.httpClient.post<Ville>('https://localhost:8000/api/villes',{
+      nom,
+      codePostal
+     }, httpOptions);
     }
 
-    public updateVille(ville: Ville): Observable<Ville> {
-      return this.httpClient.put<Ville>('https://localhost:8000/api/villes/' + ville.id, httpOptions);
+    public updateVille(id : number, nom: string, codePostal: string): Observable<Ville> {
+      return this.httpClient.put<Ville>('https://localhost:8000/api/villes/' + id,{
+        nom,
+        codePostal
+      }, httpOptions);
       }
 }

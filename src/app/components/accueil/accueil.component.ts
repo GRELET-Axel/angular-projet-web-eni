@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BehaviorSubject, first } from 'rxjs';
 import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { LoginComponent } from '../login/login.component';
+import { ProfilService } from 'src/_services/profil/profil.service';
+import { TokenStorageService } from 'src/_services/auth/token-storage.service';
 
 @Component({
   selector: 'app-accueil',
@@ -20,6 +22,7 @@ export class AccueilComponent implements OnInit {
   public displayedColumns = ['nomSortie', 'dateSortie', 'dateCloture', 'inscritPlace', 'etat', 'inscrit', 'organisateur', 'actions'];
   sorties: Sortie[] = [];
   currentDateFormated: string = "";
+  nameUser: string = "";
   public dataSource = new MatTableDataSource<Sortie>();
   
 
@@ -30,17 +33,27 @@ export class AccueilComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
   constructor(
-    private sortieService: SortieService
-    ) { 
-     
-  }
+  
+    private sortieService: SortieService,
+    private profilService: ProfilService,
+    private tokenStorageService: TokenStorageService
+
+    ) { }
 
   logincomponent: LoginComponent | undefined;
   ngOnInit(): void {
+
     this.isLoggedInhere$ = this.logincomponent?.isLoggedIn$;
     //localStorage.setItem("isLoggedIn", 'false')
+
+    const user_id = this.tokenStorageService.getUser();
     const date = new Date();
     this.currentDateFormated = date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear();
+    this.profilService.getUsers(user_id)
+      .subscribe(
+        (value: any) => {
+          this.nameUser = value.prenom + '.' + value.nom.substr(0,1).toUpperCase()
+        });
     this.lister();
   }
 
