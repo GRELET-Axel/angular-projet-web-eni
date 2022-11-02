@@ -9,6 +9,7 @@ import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { LoginComponent } from '../login/login.component';
 import { ProfilService } from 'src/_services/profil/profil.service';
 import { TokenStorageService } from 'src/_services/auth/token-storage.service';
+import { Participant } from '../../models/Participant';
 
 @Component({
   selector: 'app-accueil',
