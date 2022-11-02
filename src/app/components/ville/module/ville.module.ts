@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { CommonModule } from '@angular/common';
 import { DialogVilleComponent } from '../dialog-ville/dialog-ville.component';
+import { DialogVilleModifComponent } from '../dialog-ville-modif/dialog-ville-modif.component';
 
 
 
@@ -27,6 +28,7 @@ import { DialogVilleComponent } from '../dialog-ville/dialog-ville.component';
   declarations: [
     VilleComponent,
     DialogVilleComponent,
+    DialogVilleModifComponent
   ],
   imports: [
     BrowserModule,

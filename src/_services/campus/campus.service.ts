@@ -33,4 +33,8 @@ const httpOptions = {
   public addCampus(campus: Campus): Observable<Campus> {
   return this.httpClient.post<Campus>('https://localhost:8000/api/campuses/', httpOptions);
   }
+
+  public updateCampus(campus: Campus): Observable<Campus> {
+    return this.httpClient.put<Campus>('https://localhost:8000/api/campuses/' + campus.id, httpOptions);
+    }
 }

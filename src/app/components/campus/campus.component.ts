@@ -8,6 +8,7 @@ import { Campus } from 'src/app/models/Campus';
 import { CampusService } from 'src/_services/campus/campus.service';
 import { DialogCampusComponent } from './dialog-campus/dialog-campus.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogCampusModifComponent } from './dialog-campus-modif/dialog-campus-modif.component';
 
 
 
@@ -71,9 +72,14 @@ export class CampusComponent implements OnInit {
         })
       }
 
-  modifier(_t42: any) {
-  throw new Error('Method not implemented.');
-  }
+      modifier(campus: Campus) {
+        const dialogRef = this.dialog.open(DialogCampusModifComponent, {
+          width: '70%',
+          data:campus
+      }).afterClosed().subscribe(res=>{
+          this.lister();
+      });  
+    }
 
 
   ajouter() {

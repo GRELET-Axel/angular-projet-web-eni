@@ -28,8 +28,8 @@ export class DialogVilleComponent implements OnInit {
       this.villeService.getVilles().subscribe((data: any) => { this.villes = data.data; })
       
       this.creerVilleForm = this.formBuilder.group({
-          nom: ['', [Validators.required]],
-          codePostal: ['', [Validators.required]],
+        nomVille: ['', [Validators.required]],
+        codePostal: ['', [Validators.required]],
       })
   }
 

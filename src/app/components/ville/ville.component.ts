@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogVilleComponent } from './dialog-ville/dialog-ville.component';
+import { DialogVilleModifComponent } from './dialog-ville-modif/dialog-ville-modif.component';
 
 
 @Component({
@@ -75,9 +76,14 @@ export class VilleComponent implements OnInit {
         })
       }
 
-  modifier(_t42: any) {
-  throw new Error('Method not implemented.');
-  }
+  modifier(ville: Ville) {
+    const dialogRef = this.dialog.open(DialogVilleModifComponent, {
+      width: '30%',
+      data:ville
+  }).afterClosed().subscribe(res=>{
+      this.lister();
+  });  
+}
 
 
   ajouter() {

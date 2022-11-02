@@ -39,4 +39,8 @@ export class VilleService {
     public addVille(ville: Ville): Observable<Ville> {
      return this.httpClient.post<Ville>('https://localhost:8000/api/villes/', httpOptions);
     }
+
+    public updateVille(ville: Ville): Observable<Ville> {
+      return this.httpClient.put<Ville>('https://localhost:8000/api/villes/' + ville.id, httpOptions);
+      }
 }
