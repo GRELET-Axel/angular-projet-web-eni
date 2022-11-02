@@ -9,7 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 
 
 export class AppComponent {
-  constructor( public loginComponents: LoginComponent){
+  constructor(/* public loginComponents: LoginComponent*/){
 
   }
   title = 'front-web-projet-eni';
@@ -41,5 +41,6 @@ export class AppComponent {
    // label: "Mon profil"
   //}
   ]
+  
 }
 
