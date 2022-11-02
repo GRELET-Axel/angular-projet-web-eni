@@ -25,6 +25,7 @@ export class AccueilComponent implements OnInit {
   currentDateFormated: string = "";
   nameUser: string = "";
   currentUserId: number = 0;
+  currentUserSorties: Sortie[] = [];
   public dataSource = new MatTableDataSource<Sortie>();
   
 
@@ -54,6 +55,7 @@ export class AccueilComponent implements OnInit {
       .subscribe(
         (value: any) => {
           this.currentUserId = value.id
+          this.currentUserSorties = value.inscrit
           this.nameUser = value.prenom + '.' + value.nom.substr(0,1).toUpperCase()
         });
     this.lister();
@@ -94,9 +96,23 @@ isOrganizer(participant: Participant) : boolean
   return isOrga
 }
 
-  inscription(elem: Element) {
-  console.log(elem)
-  } 
+inscription(sortie: Sortie) {
+    let newSortie = {id: sortie.id,nom: sortie.nom}
+    let iriSortie: Array<any> = []
+    this.currentUserSorties.push(sortie)
+    this.currentUserSorties.forEach(function(value){
+      iriSortie.push('/api/sorties/'+value.id)
+    })
+    console.log(iriSortie)
+   this.sortieService.inscriptionSortie(this.currentUserId,iriSortie)
+   .pipe(first())
+   .subscribe(
+     value => {
+       console.log(value)
+     })
+     
+     window.location.reload();
+} 
 
   supprimer(campus: Sortie) {
     // this.campusService.deleteCampus(campus.id).subscribe(

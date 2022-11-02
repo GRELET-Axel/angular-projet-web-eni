@@ -43,9 +43,9 @@ export class SortieService {
      /**
    * edit participant pour inscription
   */
-      public inscriptionSortie(idUser : number,inscrit: string): Observable<any> {
+      public inscriptionSortie(idUser : number,inscrit: Sortie[]): Observable<any> {
         return this.httpClient.put<any>('https://localhost:8000/api/participants/'+idUser,{
-          inscrit //url api vers sorties/{id}
+          inscrit
         }, httpOptions);
       }
 }
