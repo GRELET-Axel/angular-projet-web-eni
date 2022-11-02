@@ -3,7 +3,8 @@
 <ul>
     <li><a href="ville">Ville</a></li>
     <li><a href="campus">Campus</a></li>
-    <li><a href="accueil">Accueil</a></li>
-    <li><a href="profil">Mon profil</a></li>
-    <li><a href="">Deconnexion</a></li>
+    <li><a href="">Accueil</a></li>
+    <li><a hidden="{{!isLoggedInhere$}}" href="profil">Mon profil</a></li>
+    <li><a hidden="{{isLoggedInhere$}}" href="login">Login</a></li>
+    <li><a hidden="{{!isLoggedInhere$}}" href="login">Deconnexion</a></li>
   </ul>

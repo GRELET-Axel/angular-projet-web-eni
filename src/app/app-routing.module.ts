@@ -13,9 +13,10 @@ const routes: Routes = [
 
   { path: 'ville', component: VilleComponent , data:{requiresLogin: true}},
 
-   { path: 'accueil', component: AccueilComponent, data:{requiresLogin: true}},
+   { path: '', component: AccueilComponent, data:{requiresLogin: true}},
   { path: 'campus', component: CampusComponent, data:{requiresLogin: true} },
-  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  //{ path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent }]
 
 @NgModule({
