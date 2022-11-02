@@ -10,7 +10,6 @@ import { VilleComponent } from '../ville.component';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
-import { NavbarComponent } from '../../navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
