@@ -19,22 +19,33 @@ export class AppComponent {
   }
   
   title = 'front-web-projet-eni';
-  
+
 //  logincomponent: LoginComponent | undefined;
-  navLinks: { link: string, label: string }[] = [{
+  navLinks: { link: string, label: string, adminRequired: boolean }[] = [{
     link: "/",
-    label: "Accueil"
+    label: "Accueil",
+    adminRequired: true
   }, {
     link: "ville",
-    label: "Ville"
+    label: "Ville",
+    adminRequired: true
   }, {
     link: "campus",
-    label: "Campus"
+    label: "Campus",
+    adminRequired: true
   }, {
     link: "profil",
-    label: "Mon profil"
+    label: "Mon profil",
+    adminRequired: true
   }
   ]
   
+  logout() {
+    this.authService.isLoggedIn$.next(false);
+    this.tokenStorage.signOut()
+    localStorage.setItem("isLoggedIn", "false");
+    location.reload();
+    //this.loggedUser$.next(null)
+  }
 }
 

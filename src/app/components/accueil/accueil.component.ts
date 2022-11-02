@@ -60,13 +60,11 @@ export class AccueilComponent implements OnInit {
     this.profilService.getUsers(user_id)
       .subscribe(
         (value: any) => {
-          console.log(value)
           this.currentUserId = value.id
           this.currentUserSorties = value.inscrit
           this.nameUser = value.prenom + '.' + value.nom.substr(0,1).toUpperCase()
         });
     this.lister();
-    console.log(this.isAdmin());
   }
 
   lister(){
