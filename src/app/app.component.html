@@ -9,17 +9,23 @@
         <ng-container *ngTemplateOutlet="nav_content"></ng-container>
       </div>
     </mat-drawer>
-    
-        <ng-container *ngTemplateOutlet="nav_content"></ng-container>
-        <ng-template #nav_content>
-            <ng-container *ngFor="let navLink of navLinks">
-              <button mat-button [routerLink]="navLink.link" [routerLinkActiveOptions]="{exact: true}"
-                routerLinkActive="active">{{navLink.label}}</button>
-            </ng-container>
-            <ng-container hidden="loginComponents.isLoggedIn" ></ng-container>
-            <button mat-button (click)="loginComponents.logout()">Se déconnecter</button>
-        </ng-template>
-       
+    <ng-template #nav_content></ng-template>
+   <!--
+<ng-template #nav_content>
+  <ng-container *ngFor="let navLink of navLinks">
+    <button mat-button [routerLink]="navLink.link" [routerLinkActiveOptions]="{exact: true}"
+      routerLinkActive="active">{{navLink.label}}</button>
+  </ng-container>
+  <ng-container *ngIf="(loginComponents.isLoggedIn$ | async); else login">
+    <button mat-button (click)="loginComponents.logout()">Se déconnecter</button>
+  </ng-container>
+  <ng-template #login>
+    <button mat-button [routerLink]="'participant/login'" [routerLinkActiveOptions]="{exact: true}"
+      routerLinkActive="active">Login</button>
+  </ng-template>
+</ng-template>
+
+       -->  
      
           
 <router-outlet ></router-outlet>
