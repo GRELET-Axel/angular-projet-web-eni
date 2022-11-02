@@ -34,7 +34,7 @@ export class DialogVilleModifComponent implements OnInit {
 
   modifierVille():void{
       if(this.modifierVilleForm.valid){
-          let ville: Ville = this.modifierVilleForm.value;  
+        let ville: Ville = this.modifierVilleForm.value;  
           ville.id = this.editData.id;
           this.villeService.updateVille(ville).subscribe({
           next:()=>{

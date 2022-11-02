@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { first } from 'rxjs';
 import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { TokenStorageService } from '../../../_services/auth/token-storage.service';
+import { ProfilService } from '../../../_services/profil/profil.service';
 
 @Component({
   selector: 'app-accueil',
@@ -18,6 +20,7 @@ export class AccueilComponent implements OnInit {
   public displayedColumns = ['nomSortie', 'dateSortie', 'dateCloture', 'inscritPlace', 'etat', 'inscrit', 'organisateur', 'actions'];
   sorties: Sortie[] = [];
   currentDateFormated: string = "";
+  nameUser: string = "";
   public dataSource = new MatTableDataSource<Sortie>();
   
 
@@ -28,13 +31,21 @@ export class AccueilComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
   constructor(
-    private sortieService: SortieService
+    private sortieService: SortieService,
+    private profilService: ProfilService,
+    private tokenStorageService: TokenStorageService
+
     ) { }
 
   ngOnInit(): void {
-    
+    const user_id = this.tokenStorageService.getUser();
     const date = new Date();
     this.currentDateFormated = date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear();
+    this.profilService.getUsers(user_id)
+      .subscribe(
+        (value: any) => {
+          this.nameUser = value.prenom + '.' + value.nom.substr(0,1).toUpperCase()
+        });
     this.lister();
   }
 

@@ -1,8 +1,8 @@
 <div>
   
-<div style="margin-left: 85%;font-size: 20px">
+<div class="info-sortie">
   <p>Date du jour : {{ currentDateFormated }}</p>
-  <p>Participant : </p>
+  <p>Participant : {{ nameUser != "."?nameUser:'noName' }}</p>
 </div>
 </div>
 <div class="liste-page" id="lipVilleList" >
