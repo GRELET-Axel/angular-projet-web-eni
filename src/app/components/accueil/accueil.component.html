@@ -63,7 +63,7 @@
             <mat-icon class="subout-icon">exit_to_app</mat-icon>
           </button>
           <button *ngIf='element.nbInscriptionsMax > element.participants.length && isParticipant(element.participants)' mat-icon-button id="btnInscrire" type="button"
-            (click)="inscription(element)" matTooltip="{{ 'Se désister' }}">
+            (click)="desister(element)" matTooltip="{{ 'Se désister' }}">
             <mat-icon class="cancel-icon">cancel_presentation</mat-icon>
           </button>
           <button *ngIf='element.etat.libelle === "Créée" && isOrganizer(element.participant)' mat-icon-button id="btnModifierVille" type="button"

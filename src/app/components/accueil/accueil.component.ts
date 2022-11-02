@@ -26,6 +26,7 @@ export class AccueilComponent implements OnInit {
   nameUser: string = "";
   currentUserId: number = 0;
   currentUserSorties: Sortie[] = [];
+  roles: Array<any> = [];
   public dataSource = new MatTableDataSource<Sortie>();
   
 
@@ -44,7 +45,10 @@ export class AccueilComponent implements OnInit {
 
   logincomponent: LoginComponent | undefined;
   ngOnInit(): void {
-
+    let token = this.tokenStorageService.getToken()?this.tokenStorageService.getToken():null
+    let tokenDecoded = token != null?Buffer.from(token.split('.')[1], 'base64').toString('binary'):''
+    
+    this.roles = JSON.parse(tokenDecoded).roles
     //localStorage.setItem("isLoggedIn", "false");  
 
    // this.isLoggedInhere$ = this.logincomponent?.isLoggedIn$;
@@ -56,11 +60,13 @@ export class AccueilComponent implements OnInit {
     this.profilService.getUsers(user_id)
       .subscribe(
         (value: any) => {
+          console.log(value)
           this.currentUserId = value.id
           this.currentUserSorties = value.inscrit
           this.nameUser = value.prenom + '.' + value.nom.substr(0,1).toUpperCase()
         });
     this.lister();
+    console.log(this.isAdmin());
   }
 
   lister(){
@@ -99,7 +105,6 @@ isOrganizer(participant: Participant) : boolean
 }
 
 inscription(sortie: Sortie) {
-    let newSortie = {id: sortie.id,nom: sortie.nom}
     let iriSortie: Array<any> = []
     this.currentUserSorties.push(sortie)
     this.currentUserSorties.forEach(function(value){
@@ -110,27 +115,37 @@ inscription(sortie: Sortie) {
    .pipe(first())
    .subscribe(
      value => {
-       console.log(value)
+      window.location.reload();
      })
+
      
-     window.location.reload();
 } 
 
-  supprimer(campus: Sortie) {
-    // this.campusService.deleteCampus(campus.id).subscribe(
-    //   value => {
-      
-    //       let index = -1
-    //       for (let j = 0; j < this.campuss.length; j++) {
-    //         if (this.campuss[j].id === campus.id) {
-    //           index = j;
-    //           this.campuss.splice(index, 1);
-    //           break;
-    //         }
-    //         this.lister();
-    //       }
-    //     })
-      }
+isAdmin(){
+  if(this.roles.includes('ROLE_ADMIN')){
+    return true
+  }
+  return false
+}
+
+desister(sortie: Sortie) {
+  let iriSortie: Array<any> = []
+  this.currentUserSorties.forEach(function(value){
+    if(value.id != sortie.id){
+      iriSortie.push('/api/sorties/'+value.id)
+    }
+  })
+ this.sortieService.inscriptionSortie(this.currentUserId,iriSortie)
+ .pipe(first())
+ .subscribe(
+   value => {
+    window.location.reload();
+   })
+}
+
+supprimer(sortie: Sortie): boolean {
+  return true
+}
 
   modifier(_t42: any) {
   throw new Error('Method not implemented.');

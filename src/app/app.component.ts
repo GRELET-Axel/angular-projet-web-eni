@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/_services/auth/auth.service';
 import { LoginComponent } from './components/login/login.component';
+import { TokenStorageService } from '../_services/auth/token-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,15 @@ import { LoginComponent } from './components/login/login.component';
 
 
 export class AppComponent {
-  constructor(public authService: AuthService){
-
+  isLogged: boolean = false;
+  constructor(public authService: AuthService,public tokenStorage: TokenStorageService){
+    if(this.tokenStorage.getToken()){
+      this.isLogged = true;
+    }
   }
   
   title = 'front-web-projet-eni';
-
+  
 //  logincomponent: LoginComponent | undefined;
   navLinks: { link: string, label: string }[] = [{
     link: "/",
