@@ -16,11 +16,22 @@ import { CampusModule } from './components/campus/module/campus.module';
 import { ProfilModule } from './components/profil/module/profil.module';
 import { AccueilModule } from './components/accueil/module/accueil.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatOptionModule, MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +47,30 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CampusModule,
     ProfilModule,
     AccueilModule, 
-    VilleModule
+    VilleModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatOptionModule,
+    MatNativeDateModule,
+    RouterModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    AppRoutingModule,
+    HttpClientModule,
+    MatToolbarModule,
+    BrowserAnimationsModule,
+    MatSortModule,
+    MatDialogModule,
+    MatSelectModule,
+    CommonModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatRippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

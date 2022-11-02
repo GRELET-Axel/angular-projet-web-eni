@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { Campus } from 'src/app/models/Campus';
 import { CampusService } from 'src/_services/campus/campus.service';
+import { DialogCampusComponent } from './dialog-campus/dialog-campus.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 
 @Component({
@@ -16,6 +19,8 @@ import { CampusService } from 'src/_services/campus/campus.service';
 export class CampusComponent implements OnInit {
   public displayedColumns = ['nomCampus', 'actions'];
   campuss: Campus[] = [];
+  campus !: Campus;
+ 
   public dataSource = new MatTableDataSource<Campus>();
 
   sortFunction: ((data: Campus[], sort: MatSort) => Campus[]) | undefined;
@@ -28,7 +33,9 @@ export class CampusComponent implements OnInit {
 
   constructor(
     private campusService: CampusService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
+
   ) {}
 
 
@@ -70,6 +77,13 @@ export class CampusComponent implements OnInit {
 
 
   ajouter() {
+    this.lister();
+    this.dialog.open(DialogCampusComponent, {
+        width: '30%',
+        data: this.campus
+    }).afterClosed().subscribe(res=>{
+        this.lister();
+    });
   }
 
   applyFilter(event: Event) {

@@ -7,6 +7,8 @@ import { VilleService } from 'src/_services/ville/ville.service';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogVilleComponent } from './dialog-ville/dialog-ville.component';
 
 
 @Component({
@@ -22,6 +24,8 @@ export class VilleComponent implements OnInit {
 
   public displayedColumns = ['nomVille', 'codePostal', 'actions'];
   villes: Ville[] = [];
+  ville !: Ville;
+
   public dataSource = new MatTableDataSource<Ville>();
 
   sortFunction: ((data: Ville[], sort: MatSort) => Ville[]) | undefined;
@@ -34,7 +38,8 @@ export class VilleComponent implements OnInit {
 
   constructor(
     private villeService: VilleService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
 
@@ -76,7 +81,15 @@ export class VilleComponent implements OnInit {
 
 
   ajouter() {
+    this.lister();
+    this.dialog.open(DialogVilleComponent, {
+        width: '30%',
+        data: this.ville
+    }).afterClosed().subscribe(res=>{
+        this.lister();
+    });
   }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

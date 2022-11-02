@@ -28,4 +28,9 @@ const httpOptions = {
   public deleteCampus(id: number): Observable<Campus> {
     return this.httpClient.delete<Campus>('https://localhost:8000/api/campuses/' + id , httpOptions);
   }
+  
+
+  public addCampus(campus: Campus): Observable<Campus> {
+  return this.httpClient.post<Campus>('https://localhost:8000/api/campuses/', httpOptions);
   }
+}
