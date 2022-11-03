@@ -29,6 +29,7 @@ import { RouterModule } from '@angular/router';
 import { AfficherSortieComponent } from './components/afficher-sortie/afficher-sortie.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
