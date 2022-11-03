@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogSortieAjoutComponent } from '../dialog-sortie-ajout/dialog-sortie-ajout.component';
+import { DialogSortieModifComponent } from '../dialog-sortie-modif/dialog-sortie-modif.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,6 +13,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+
+
+
 
 
 
@@ -20,6 +28,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AccueilComponent,
+    DialogSortieAjoutComponent,
+    DialogSortieModifComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +44,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatTooltipModule
+    MatInputModule,
+    MatTooltipModule,
+    MatSelectModule,
+    MatDatepickerModule
+  
   ],
   providers: [],
   bootstrap: []

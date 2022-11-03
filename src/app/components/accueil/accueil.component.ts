@@ -13,6 +13,8 @@ import { Participant } from '../../models/Participant';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
+import { DialogSortieAjoutComponent } from './dialog-sortie-ajout/dialog-sortie-ajout.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-accueil',
@@ -47,6 +49,7 @@ export class AccueilComponent implements OnInit {
     private profilService: ProfilService,
     private authService: AuthService,
     private tokenStorageService: TokenStorageService,
+    public dialog: MatDialog
     ) { 
       this.authService.isLoggedIn.subscribe(value=>{
         this.isLogged = value
@@ -162,8 +165,15 @@ supprimer(sortie: Sortie): boolean {
   }
 
 
-  ajouter() {
-  }
+ajouter() {
+  this.lister();
+  this.dialog.open(DialogSortieAjoutComponent, {
+      width: '30%',
+      data: 'testData'
+  }).afterClosed().subscribe(res=>{
+      this.lister();
+  });
+}
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
