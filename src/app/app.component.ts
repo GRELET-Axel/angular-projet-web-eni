@@ -35,22 +35,26 @@ export class AppComponent {
 
   
 
-  navLinks: { link: string, label: string, adminRequired: boolean }[] = [{
+  navLinks: { link: string, label: string, adminRequired: boolean, default: boolean }[] = [{
     link: "/",
     label: "Accueil",
-    adminRequired: false
+    adminRequired: false,
+    default: true
   }, {
     link: "ville",
     label: "Ville",
-    adminRequired: true
+    adminRequired: true,
+    default: true
   }, {
     link: "campus",
     label: "Campus",
-    adminRequired: true
+    adminRequired: true,
+    default: true
   }, {
     link: "profil",
     label: "Mon profil",
-    adminRequired: false
+    adminRequired: false,
+    default: false
   }
   ]
 

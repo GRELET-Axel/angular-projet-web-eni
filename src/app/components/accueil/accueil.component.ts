@@ -36,7 +36,7 @@ export class AccueilComponent implements OnInit {
   public dataSource = new MatTableDataSource<Sortie>();
   isLoggedIn: boolean = false;
   isLogged: boolean = true;
-
+  public sortie_id : number = 0;
   sortFunction: ((data: Sortie[], sort: MatSort) => Sortie[]) | undefined;
   titre = '';
 
@@ -237,6 +237,13 @@ annuler(sortie: Sortie) {
     window.location.reload();
    })
 }
+
+
+displaySortie(sortie_id: number){
+  this.sortie_id = sortie_id
+}
+
+
 
 modifier(sortie: Sortie) {
   this.lister();

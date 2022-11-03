@@ -9,8 +9,8 @@
       {{ 'Ajouter un campus' }}
     </button>
   </div>
-  <mat-label>Filter les campus</mat-label>
-  <input matInput (keyup)="applyFilter($event)" #input>
+  <mat-label style="font-weight: bold;">Filtrer les campus :</mat-label>
+  <input style="border: solid 1px;width: 5%;margin-top: 1rem;margin-left: 2rem" matInput (keyup)="applyFilter($event)" #input>
 
   <table id="tableCampusList" mat-table [dataSource]="dataSource" matSort matSortActive="nomCampus" matSortDirection="asc">
     <ng-container matColumnDef='nomCampus'>

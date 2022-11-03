@@ -5,8 +5,8 @@
         {{ 'Ajouter une ville' }}
       </button>
     </div>
-    <mat-label>Filter les villes</mat-label>
-    <input matInput (keyup)="applyFilter($event)" #input>
+    <mat-label style="font-weight: bold;">Filtrer les villes/code postale :</mat-label>
+    <input style="border: solid 1px;width: 5%;margin-top: 1rem;margin-left: 2rem" matInput (keyup)="applyFilter($event)" #input>
   
     <table id="tableVilleList" mat-table [dataSource]="dataSource" matSort matSortActive="nomVille" matSortDirection="asc">
       <ng-container matColumnDef='nomVille'>

@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogVilleComponent } from './dialog-ville/dialog-ville.component';
 import { DialogVilleModifComponent } from './dialog-ville-modif/dialog-ville-modif.component';
+import { TokenStorageService } from '../../../_services/auth/token-storage.service';
 
 
 @Component({
@@ -40,9 +41,19 @@ export class VilleComponent implements OnInit {
   constructor(
     private villeService: VilleService,
     private router: Router,
-    public dialog: MatDialog
-  ) {}
-
+    public dialog: MatDialog,
+    private tokenStorageService: TokenStorageService
+  ) {
+    if(this.tokenStorageService.getToken()){
+      let token = this.tokenStorageService.getToken()?this.tokenStorageService.getToken():null
+      let tokenDecoded = token != null?Buffer.from(token.split('.')[1], 'base64').toString('binary'):''
+        
+      let roles = JSON.parse(tokenDecoded).roles
+      if(!roles.includes('ROLE_ADMIN')){
+        window.location.href='/'
+      }
+  }
+  }
 
   ngOnInit(): void {
     this.lister()
