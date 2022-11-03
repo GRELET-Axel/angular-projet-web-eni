@@ -19,8 +19,9 @@ export class AfficherSortieComponent implements OnInit {
 
   ngOnInit(): void {    
 
-    const user_id = this.sortieService.getSorties();
-    this.sortieService.getSorties()
+    //const sortie_id = this.sortieService.getSorties().value = 8;
+    const sortie_id:  5 = 5;
+    this.sortieService.getSortiesById(sortie_id)
       .subscribe(
         (        value: any) => {
           this.sortie = value,
@@ -28,6 +29,5 @@ export class AfficherSortieComponent implements OnInit {
           
         });
   }
-
   
 }

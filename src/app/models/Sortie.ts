@@ -1,21 +1,24 @@
 import { Campus } from "./Campus";
 import { Etat } from "./Etat";
+import { Lieu } from "./Lieu";
 import { Participant } from "./Participant";
+import { Ville } from "./Ville";
 
 
 export class Sortie {
   constructor(
     public id: number,
     public nom: string,
-    public date_heure_debut: string,
-    public duration: number,
-    public date_limite_inscription: string,
-    public nbMaxRegistrations: number,
-    public description: string,
+    public dateHeureDebut: string,
+    public duree: number,
+    public dateLimiteInscription: Date,
+    public nbInscriptionsMax: number,
+    public infosSortie: string,
+    public ville: Ville,
     public etat: Etat,
     public urlPicture: string,
     // public registrations: Registration[],
-    public location: Location,
+    public lieu: Lieu,
     public campus: Campus,
     public organizer: Participant,
     public participants: Participant[],
