@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
 import { DialogSortieAjoutComponent } from './dialog-sortie-ajout/dialog-sortie-ajout.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogSortieModifComponent } from './dialog-sortie-modif/dialog-sortie-modif.component';
 
 @Component({
   selector: 'app-accueil',
@@ -89,7 +90,7 @@ export class AccueilComponent implements OnInit {
         value => {
           this.sorties = value
           this.dataSource.data = this.sorties;
-          console.log(this.sorties)
+          // console.log(this.sorties)
         })
 }
 
@@ -226,13 +227,26 @@ desister(sortie: Sortie) {
    })
 }
 
-supprimer(sortie: Sortie): boolean {
-  return true
+annuler(sortie: Sortie) {
+  let sortieId = sortie.id
+  let iriEtat = '/api/etats/6'
+  this.sortieService.ouvrirSortie(sortieId,iriEtat)
+ .pipe(first())
+ .subscribe(
+   value => {
+    window.location.reload();
+   })
 }
 
-  modifier(_t42: any) {
-  throw new Error('Method not implemented.');
-  }
+modifier(sortie: Sortie) {
+  this.lister();
+  this.dialog.open(DialogSortieModifComponent, {
+      width: '30%',
+      data: sortie
+  }).afterClosed().subscribe(res=>{
+      this.lister();
+  });
+}
 
 
 ajouter() {

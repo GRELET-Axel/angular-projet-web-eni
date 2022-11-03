@@ -1,1 +1,65 @@
-<p>dialog-sortie-modif works!</p>
+<h1 mat-dialog-title>Modifier la sortie : {{currentSortie.nom}}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="modifierSortieForm" action="">
+        <!--Inputs-->
+        <mat-form-field appearance="outline">
+            <mat-label>Nom de la sortie</mat-label>
+            <input matInput formControlName="nom">
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierSortieForm.invalid">Le nom de la sortie est obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Date Heure début</mat-label>
+            <input matInput formControlName="nom">
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierSortieForm.invalid">La date de début est obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Durée de la sortie</mat-label>
+            <input matInput formControlName="duree">
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierSortieForm.invalid">La durée est obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Date Limite</mat-label>
+            <input matInput formControlName="limitDate">
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierSortieForm.invalid">La date limite est obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre d'inscrit max</mat-label>
+            <input matInput formControlName="nbInscritMax">
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierSortieForm.invalid">Le nombre maximum de participant est obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Information sur la sortie</mat-label>
+            <input matInput formControlName="infoSortie">
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierSortieForm.invalid">L'information sur la sortie est obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Campus</mat-label>
+            <input matInput formControlName="campus">
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierSortieForm.invalid">Campus obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Lieu</mat-label>
+            <input matInput formControlName="lieu">
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierSortieForm.invalid">Le lieu de la sortie est obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" disabled>
+            <mat-label>Organisateur</mat-label>
+            <input matInput formControlName="organisateur">
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierSortieForm.invalid">L'organisateur est obligatoire</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<!--Boutons-->
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="accent"(click)="modifierSortie()">Modifier</button>
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+</div>

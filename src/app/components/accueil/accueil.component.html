@@ -79,7 +79,7 @@
             <mat-icon class="lock-open-icon">lock_open</mat-icon>
           </button>
           <button *ngIf='isOrganizer(element.participant) && isCanceled(element.etat.libelle)' mat-icon-button type="button"
-            (click)="supprimer(element)" matTooltip="{{ 'Annuler une sortie' }}">
+            (click)="annuler(element)" matTooltip="{{ 'Annuler une sortie' }}">
             <mat-icon class="delete-icon">delete</mat-icon>
           </button>
         </td>
