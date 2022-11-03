@@ -5,11 +5,14 @@ import { SortieService } from '../../../../_services/sortie/sortie.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CampusService } from '../../../../_services/campus/campus.service';
 import { Campus } from '../../../models/Campus';
+import { DatePipe } from '@angular/common';
+import { TokenStorageService } from '../../../../_services/auth/token-storage.service';
 
 @Component({
   selector: 'app-dialog-sortie-ajout',
   templateUrl: './dialog-sortie-ajout.component.html',
-  styleUrls: ['./dialog-sortie-ajout.component.css']
+  styleUrls: ['./dialog-sortie-ajout.component.css'],
+  providers: [DatePipe]
 })
 export class DialogSortieAjoutComponent implements OnInit {
   @Input() sortie!:Sortie;
@@ -20,7 +23,10 @@ export class DialogSortieAjoutComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogSortieAjoutComponent>,
     public sortieService: SortieService,
     public campusService: CampusService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private datePipe: DatePipe,
+    private tokenStorageService: TokenStorageService,
+
     ) { }
 
   ngOnInit(): void {
@@ -37,21 +43,31 @@ export class DialogSortieAjoutComponent implements OnInit {
       nbInscritMax: ['', [Validators.required]],
       infoSortie: ['', [Validators.required]],
       campus: ['', [Validators.required]],
+      
   })
   }
 
 ajoutSortie(){
   if (this.creerSortieForm.valid) {
     let sortieValue:any = this.creerSortieForm.value;  
-    console.log(sortieValue)
-    // this.sortieService.addSortie().subscribe({
-    //     next:(value)=>{
-    //         this.dialogRef.close('add');  
-    //     },
-    //     error:()=>{
-    //         this.dialogRef.close('add');
-    //     }
-    // });
+    // console.log(sortieValue)
+    let campusIri = '/api/campuses/'+sortieValue.campus
+    let dateDebutFormated = this.datePipe.transform(sortieValue.heureDebut, 'yyyy-mm-dd H:m:s')
+    let dateLimitFormated = this.datePipe.transform(sortieValue.limitDate, 'yyyy-mm-dd')
+    let userId = this.tokenStorageService.getUser()
+    let organizerIri = '/api/participants/'+parseInt(userId)
+    if(dateDebutFormated != null && dateLimitFormated != null){
+      this.sortieService.addSortie(sortieValue.nom, dateDebutFormated, sortieValue.duree, dateLimitFormated, parseInt(sortieValue.nbInscritMax), sortieValue.infoSortie, campusIri, organizerIri).subscribe({
+        next:(value)=>{
+            this.dialogRef.close('add');  
+            window.location.reload()
+        },
+        error:()=>{
+            this.dialogRef.close('add');
+        }
+    });
+    }
+    
 }
 }  
 

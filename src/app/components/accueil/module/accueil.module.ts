@@ -16,14 +16,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
-
-
-
-
-
-
-
-
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule} from '@angular-material-components/datetime-picker';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -47,10 +41,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     MatTooltipModule,
     MatSelectModule,
-    MatDatepickerModule
-  
+    MatDatepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: []
 })
 export class AccueilModule { }

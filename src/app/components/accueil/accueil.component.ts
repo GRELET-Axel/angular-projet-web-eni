@@ -89,7 +89,7 @@ export class AccueilComponent implements OnInit {
         value => {
           this.sorties = value
           this.dataSource.data = this.sorties;
-          console.log(this.sorties)
+          // console.log(this.sorties)
         })
 }
 
@@ -123,7 +123,7 @@ inscription(sortie: Sortie) {
     this.currentUserSorties.forEach(function(value){
       iriSortie.push('/api/sorties/'+value.id)
     })
-    console.log(iriSortie)
+    // console.log(iriSortie)
    this.sortieService.inscriptionSortie(this.currentUserId,iriSortie)
    .pipe(first())
    .subscribe(
