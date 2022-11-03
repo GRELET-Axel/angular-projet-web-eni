@@ -52,8 +52,8 @@ ajoutSortie(){
     let sortieValue:any = this.creerSortieForm.value;  
     // console.log(sortieValue)
     let campusIri = '/api/campuses/'+sortieValue.campus
-    let dateDebutFormated = this.datePipe.transform(sortieValue.heureDebut, 'yyyy-mm-dd H:m:s')
-    let dateLimitFormated = this.datePipe.transform(sortieValue.limitDate, 'yyyy-mm-dd')
+    let dateDebutFormated = this.datePipe.transform(sortieValue.heureDebut, 'Y-M-d H:m:s')
+    let dateLimitFormated = this.datePipe.transform(sortieValue.limitDate, 'Y-M-d')
     let userId = this.tokenStorageService.getUser()
     let organizerIri = '/api/participants/'+parseInt(userId)
     if(dateDebutFormated != null && dateLimitFormated != null){
