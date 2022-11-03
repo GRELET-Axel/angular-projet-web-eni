@@ -65,7 +65,7 @@
 <ng-template #nav_content>
   
   <ng-container *ngFor="let navLink of navLinks">
-    <ng-container *ngIf="!isAdmin() && !navLink.adminRequired">
+    <ng-container *ngIf="isAdmin() && navLink.adminRequired">
     <button mat-button [routerLink]="navLink.link" [routerLinkActiveOptions]="{exact: true}"
       routerLinkActive="active">{{navLink.label}}</button>
     </ng-container>
