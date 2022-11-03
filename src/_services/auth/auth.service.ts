@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { subscriptionLogsToBeFn } from 'rxjs/internal/testing/TestScheduler';
@@ -20,7 +20,8 @@ export class AuthService {
     isLoggedIn: "isLoggedIn"
   }
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(coerceBooleanProperty(localStorage.getItem(this.localstorageKeys.isLoggedIn)));
-  constructor(private http: HttpClient) { }
+  public sortie_id:number = 0;
+  constructor(private http: HttpClient)  { }
 
   login(email: string, password: string): Observable<any> {
     return this.http.post('https://localhost:8000/api/login_check', {
@@ -28,7 +29,10 @@ export class AuthService {
       password
     }, httpOptions);
   }
-
+  displaySortie(sortie_id: number){
+    this.sortie_id = sortie_id
+  }
+  
   register(email: string, password: string, nom: string, prenom: string, telephone: string, administrateur: boolean, campus_id: number): Observable<any> {
     return this.http.post('https://localhost:8000/api/register', {
       email,

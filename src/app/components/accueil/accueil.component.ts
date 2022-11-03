@@ -48,7 +48,7 @@ export class AccueilComponent implements OnInit {
     private router: Router,
     private sortieService: SortieService,
     private profilService: ProfilService,
-    private authService: AuthService,
+    public authService: AuthService,
     private tokenStorageService: TokenStorageService,
     public dialog: MatDialog
     ) { 
@@ -239,9 +239,7 @@ annuler(sortie: Sortie) {
 }
 
 
-displaySortie(sortie_id: number){
-  this.sortie_id = sortie_id
-}
+
 
 
 
