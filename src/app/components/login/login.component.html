@@ -27,13 +27,8 @@
           *ngIf="password.errors && f.submitted"
         >
           <div *ngIf="password.errors">Password is required</div>
-          <div *ngIf="password.errors">
-            Password must be at least 6 characters
           </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-block">
-          Login
-        </button>
       </div>
       <div class="form-group">
         <div
@@ -45,12 +40,11 @@
         </div>
         <div class="one" #one></div>
       </div>
-        </div>
         <input class="btn btn-primary btn-block" type="submit" id='submit' value='LOGIN' >
         <button [routerLink]="['/register']" type="button"
         matTooltip="{{ 'Créer un compte' }}">
-        <mat-icon>library_add</mat-icon>       
-      </button>
+        <mat-icon>library_add</mat-icon>    
+      </button>   
     </form>
   </div>
    

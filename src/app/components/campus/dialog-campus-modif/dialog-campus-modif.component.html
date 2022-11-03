@@ -6,6 +6,7 @@
             <mat-label>Nom du campus</mat-label>
             <input matInput formControlName="nomCampus" placeholder="Nom du campus">
             <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierCampusForm.invalid">Le nom du campus est obligatoire</mat-error>
         </mat-form-field>
     </form>
 </div>

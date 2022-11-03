@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Campus } from 'src/app/models/Campus';
 import { CampusService } from 'src/_services/campus/campus.service';
@@ -22,7 +22,7 @@ export class DialogCampusModifComponent implements OnInit {
   
   ngOnInit(): void {
       this.modifierCampusForm = this.formBuilder.group({
-          nomCampus: [''],
+          nomCampus: ['', Validators.required],
       });
 
       if(this.editData){

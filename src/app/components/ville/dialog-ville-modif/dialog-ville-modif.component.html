@@ -6,11 +6,13 @@
             <mat-label>Nom</mat-label>
             <input matInput formControlName="nom" placeholder="Nom de la ville">
             <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierVilleForm.invalid">Le nom de la ville est obligatoire</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Code postal</mat-label>
             <input matInput formControlName="codePostal" placeholder="Code postal de la ville">
             <mat-hint></mat-hint>
+            <mat-error *ngIf="modifierVilleForm.invalid">Le code postal de la ville est obligatoire</mat-error>
         </mat-form-field>
     </form>
 </div>

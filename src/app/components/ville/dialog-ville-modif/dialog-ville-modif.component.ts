@@ -22,8 +22,8 @@ export class DialogVilleModifComponent implements OnInit {
   
   ngOnInit(): void {
       this.modifierVilleForm = this.formBuilder.group({
-          nom: [''],
-          codePostal: ['']
+          nom: ['', Validators.required],
+          codePostal: ['', Validators.required],
       });
 
       if(this.editData){
