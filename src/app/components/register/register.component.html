@@ -34,7 +34,7 @@
                 <div class="form-group" style="text-align: center;">
                   <mat-form-field appearance="fill">
                     <mat-label>Campus</mat-label>
-                    <mat-select [(ngModel)]="form.campus" campus #campus="ngModel" [ngModelOptions]="{standalone: true}">
+                    <mat-select [(ngModel)]="form.campus" campus #campus="ngModel" [ngModelOptions]="{standalone: true}" ngDefaultControl>
                       <mat-option>None</mat-option>
                       <mat-option *ngFor="let campus of campuses" [value]="campus.id">{{campus.nom}}</mat-option>
                     </mat-select>
