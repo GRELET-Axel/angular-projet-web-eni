@@ -6,26 +6,25 @@
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profil :</h4>
+                    <h4 class="text-right">Afficher la sortie : {{sortie.nom}}</h4>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Nom :</label><input type="text" class="form-control"  value="{{sortie.nom}}" ></div>
-                    <div class="col-md-6"><label class="labels">Date et heure :</label><input type="text" class="form-control" value="{{sortie.date_heure_debut}}" ></div>
-                    <div class="col-md-12"><label class="labels">Date limite d'inscription :</label><input type="text" class="form-control"  value="{{sortie.date_limite_inscription}}" ></div>
-                    <div class="col-md-12"><label class="labels">Nombre de places :</label><input type="text" class="form-control" value="{{sortie.nbMaxRegistrations}}"></div>
-                    <div class="col-md-12"><label class="labels">Durée</label><input type="password" class="form-control" value="{{sortie.duration}}"></div>
-                    <div class="col-md-12"><label class="labels">Description</label><input type="password" class="form-control" value="{{sortie.description}}"></div>
-                    <div class="col-md-12"><label class="labels">Campus :</label><input type="text" class="form-control" value="{{sortie.campus}}"></div>
-                    <!-- <div class="col-md-6"><label class="labels">Lieu :</label><input type="text" class="form-control"  value="{{}}" ></div> -->
-                    <!-- <div class="col-md-6"><label class="labels">Rue</label><input type="text" class="form-control" value="{{sortie.r}}" ></div> -->
-                    <!-- <div class="col-md-12"><label class="labels">Code postal</label><input type="text" class="form-control"  value="{{participant.telephone}}" ></div>
-                    <div class="col-md-12"><label class="labels">Latitude</label><input type="text" class="form-control" value="{{participant.email}}"></div>
-                    <div class="col-md-12"><label class="labels">Longitude</label><input type="password" class="form-control" value=""></div> -->
-                
-                  <!--  <div class="col-md-12"><label class="labels">Ma photo :</label><input type="text" class="form-control" value=""></div> -->
+                    <div class="col-md-6"><label class="labels">Nom :</label><input disabled type="text" class="form-control"  value="{{sortie.nom}}" ></div>
+                    <div class="col-md-6"><label class="labels">Date et heure :</label><input disabled type="text" class="form-control" value="{{sortie.dateHeureDebut}}" ></div>
+                    <div class="col-md-12"><label class="labels">Date limite d'inscription :</label><input disabled type="text" class="form-control"  value="{{sortie.dateLimiteInscription}}" ></div>
+                    <div class="col-md-12"><label class="labels">Nombre de places :</label><input disabled type="text" class="form-control" value="{{sortie.nbInscriptionsMax}}"></div>
+                    <div class="col-md-12"><label class="labels">Durée</label><input disabled type="text" class="form-control" value="{{sortie.duree}}"></div>
+                    <div class="col-md-12"><label class="labels">Description</label><input disabled type="text" class="form-control" value="{{sortie.infosSortie}}"></div>
+                 </div>
+                 <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Campus :</label><input  disabled type="text" class="form-control" value="{{sortie.campus.nom}}"></div>
+                    <div class="col-md-6"><label class="labels">Lieu :</label><input disabled type="text" class="form-control"  value="{{sortie.lieu.nom}}" ></div>
+                    <div class="col-md-6"><label class="labels">Rue</label><input disabled type="text" class="form-control" value="{{sortie.lieu.rue}}" ></div>
+                    <div class="col-md-12"><label class="labels">Code postal</label><input disabled type="text" class="form-control"  value="{{sortie.lieu.ville.codePostal}}" ></div>
+                    <div class="col-md-12"><label class="labels">Latitude</label><input disabled type="text" class="form-control" value="{{sortie.lieu.latitude}}"></div>
+                    <div class="col-md-12"><label class="labels">Longitude</label><input disabled type="text" class="form-control" value="{{sortie.lieu.longitude}}"></div>
+                  </div>            
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Enregistrer</button></div>
-            </div>
         </div>
     </div>
 </div>

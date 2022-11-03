@@ -27,7 +27,7 @@ export class SortieService {
   }
 
   public getSortiesById(idSortie: number): Observable<Sortie[]> {
-    return this.httpClient.get<Sortie[]>('https://localhost:8000/api/sorties.json/' + idSortie , httpOptions);
+    return this.httpClient.get<Sortie[]>('https://localhost:8000/api/sorties/' + idSortie + '.json' , httpOptions);
   }
 
     /**
