@@ -20,10 +20,13 @@ export class AppComponent {
       this.isLogged = value
     })
 
-    let token = this.tokenStorage.getToken()?this.tokenStorage.getToken():null
-    let tokenDecoded = token != null?Buffer.from(token.split('.')[1], 'base64').toString('binary'):''
-      
-    // this.roles = JSON.parse(tokenDecoded).roles
+    if(this.tokenStorage.getToken() && this.isLogged === true){
+      let token = this.tokenStorage.getToken()?this.tokenStorage.getToken():null
+      let tokenDecoded = token != null?Buffer.from(token.split('.')[1], 'base64').toString('binary'):''
+        
+      this.roles = JSON.parse(tokenDecoded).roles
+    }
+    
   }
   
   title = 'front-web-projet-eni';
@@ -68,7 +71,6 @@ isAdmin(){
     this.isLogged = false;
     this.tokenStorage.signOut()
     localStorage.setItem("isLoggedIn", "false");
-    location.reload();
     window.location.href="/login"
   }
 }

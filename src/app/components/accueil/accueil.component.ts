@@ -58,15 +58,12 @@ export class AccueilComponent implements OnInit {
 
     if(!this.tokenStorageService.getToken()){
       this.router.navigate(['login'])
+    }else{
+      let token = this.tokenStorageService.getToken()?this.tokenStorageService.getToken():null
+      let tokenDecoded = token != null?Buffer.from(token.split('.')[1], 'base64').toString('binary'):''
+      
+      this.roles = JSON.parse(tokenDecoded).roles
     }
-
-    console.log(this.isLogged)
-
-    let token = this.tokenStorageService.getToken()?this.tokenStorageService.getToken():null
-    let tokenDecoded = token != null?Buffer.from(token.split('.')[1], 'base64').toString('binary'):''
-    
-    this.roles = JSON.parse(tokenDecoded).roles
-
     
 
     const user_id = this.tokenStorageService.getUser();
