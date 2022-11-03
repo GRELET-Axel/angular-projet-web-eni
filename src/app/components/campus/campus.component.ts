@@ -74,7 +74,7 @@ export class CampusComponent implements OnInit {
 
       modifier(campus: Campus) {
         const dialogRef = this.dialog.open(DialogCampusModifComponent, {
-          width: '70%',
+          width: '30%',
           data:campus
       }).afterClosed().subscribe(res=>{
           this.lister();
