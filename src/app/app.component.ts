@@ -23,7 +23,7 @@ export class AppComponent {
     let token = this.tokenStorage.getToken()?this.tokenStorage.getToken():null
     let tokenDecoded = token != null?Buffer.from(token.split('.')[1], 'base64').toString('binary'):''
       
-    this.roles = JSON.parse(tokenDecoded).roles
+    // this.roles = JSON.parse(tokenDecoded).roles
   }
   
   title = 'front-web-projet-eni';

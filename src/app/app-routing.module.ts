@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './components/accueil/accueil.component';
+import { AfficherSortieComponent } from './components/afficher-sortie/afficher-sortie.component';
 import { CampusComponent } from './components/campus/campus.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfilComponent } from './components/profil/profil.component';
@@ -16,8 +17,9 @@ const routes: Routes = [
    { path: '', component: AccueilComponent, data:{requiresLogin: true}},
   { path: 'campus', component: CampusComponent, data:{requiresLogin: true} },
   { path: 'login', component: LoginComponent },
-  //{ path: '', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }]
+  { path: 'register', component: RegisterComponent },
+  { path: 'sortie', component: AfficherSortieComponent, data:{requiresLogin: true} },
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

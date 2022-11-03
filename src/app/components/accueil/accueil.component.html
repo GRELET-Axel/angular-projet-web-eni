@@ -54,7 +54,7 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button id="btnModifierVille" type="button"
+          <button mat-icon-button id="btnModifierVille" [routerLink]="['/sortie']" type="button"
            matTooltip="{{ 'Afficher la sortie' }}">
             <mat-icon class="visibility-icon">visibility</mat-icon>
           </button>

@@ -26,12 +26,13 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
-import { DialogVilleModifComponent } from './components/ville/dialog-ville-modif/dialog-ville-modif.component';
-import { DialogCampusModifComponent } from './components/campus/dialog-campus-modif/dialog-campus-modif.component';
+import { AfficherSortieComponent } from './components/afficher-sortie/afficher-sortie.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    AfficherSortieComponent,
   ],
   imports: [
     BrowserModule,
