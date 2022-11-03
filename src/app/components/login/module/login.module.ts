@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from '../login.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { LoginComponent } from '../login.component';
     MatNativeDateModule,
     RouterModule,
     MatFormFieldModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: []

@@ -52,6 +52,10 @@
                 <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
                   Signup failed!<br />{{ errorMessage }}
                 </div>
+                <button [routerLink]="['/login']" type="button"
+                matTooltip="{{ 'Se connecter' }}">
+                <mat-icon>library_add</mat-icon>       
+              </button>
               </form>
         </div>
     </div>
