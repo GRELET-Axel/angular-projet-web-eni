@@ -26,6 +26,10 @@ export class SortieService {
     return this.httpClient.get<Sortie[]>('https://localhost:8000/api/sorties.json', httpOptions);
   }
 
+  public getSortiesById(idSortie: number): Observable<Sortie[]> {
+    return this.httpClient.get<Sortie[]>('https://localhost:8000/api/sorties.json/' + idSortie , httpOptions);
+  }
+
     /**
    * Supprimer une sortie de l'API
    */

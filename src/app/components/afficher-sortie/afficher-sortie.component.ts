@@ -28,4 +28,6 @@ export class AfficherSortieComponent implements OnInit {
           
         });
   }
+
+  
 }
