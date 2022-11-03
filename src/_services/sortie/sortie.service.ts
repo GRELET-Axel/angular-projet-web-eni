@@ -41,7 +41,7 @@ export class SortieService {
   /**
    * Supprimer une sortie de l'API
   */
-    public addSortie(nom: string, dateHeureDebut: string, duree: string, dateLimiteInscription: string, nbInscriptionsMax: number, infosSortie: string, campus: string, participant: string): Observable<Sortie> {
+    public addSortie(nom: string, dateHeureDebut: string, duree: string, dateLimiteInscription: string, nbInscriptionsMax: number, infosSortie: string, campus: string, participant: string, etat: string): Observable<Sortie> {
      return this.httpClient.post<Sortie>('https://localhost:8000/api/sorties',{
       nom,
       dateHeureDebut,
@@ -50,7 +50,8 @@ export class SortieService {
       nbInscriptionsMax,
       infosSortie,
       campus,
-      participant
+      participant,
+      etat
      }, httpOptions);
     }
 
@@ -60,6 +61,15 @@ export class SortieService {
       public inscriptionSortie(idUser : number,inscrit: Sortie[]): Observable<any> {
         return this.httpClient.put<any>('https://localhost:8000/api/participants/'+idUser,{
           inscrit
+        }, httpOptions);
+      }
+
+          /**
+         * edit participant pour inscription
+        */
+        public ouvrirSortie(idSortie : number,etat: string): Observable<any> {
+        return this.httpClient.put<any>('https://localhost:8000/api/sorties/'+idSortie,{
+          etat
         }, httpOptions);
       }
 }

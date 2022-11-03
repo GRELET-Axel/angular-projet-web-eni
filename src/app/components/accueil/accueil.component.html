@@ -38,7 +38,7 @@
 
       <ng-container matColumnDef='etat'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">Etat</th> 
-        <td mat-cell  *matCellDef="let element"> {{element.etat.libelle}} </td>
+        <td mat-cell  *matCellDef="let element"> {{element.etat.libelle?element.etat.libelle:'pas d\'état'}} </td>
       </ng-container>
   
       <ng-container matColumnDef='inscrit'>
@@ -58,7 +58,7 @@
            matTooltip="{{ 'Afficher la sortie' }}">
             <mat-icon class="visibility-icon">visibility</mat-icon>
           </button>
-          <button *ngIf='element.nbInscriptionsMax > element.participants.length && !isParticipant(element.participants)' mat-icon-button id="btnInscrire" type="button"
+          <button *ngIf='element.nbInscriptionsMax > element.participants.length && !isParticipant(element.participants) && isValidEtat(element.etat.libelle)' mat-icon-button id="btnInscrire" type="button"
             (click)="inscription(element)" matTooltip="{{ 'S\'inscrire' }}">
             <mat-icon class="subout-icon">exit_to_app</mat-icon>
           </button>
@@ -66,12 +66,20 @@
             (click)="desister(element)" matTooltip="{{ 'Se désister' }}">
             <mat-icon class="cancel-icon">cancel_presentation</mat-icon>
           </button>
-          <button *ngIf='element.etat.libelle === "Créée" && isOrganizer(element.participant)' mat-icon-button  type="button"
+          <button *ngIf='element.etat.libelle != "Annulée" && element.etat.libelle != "Passée" && element.etat.libelle != "Activité en cours"  && isOrganizer(element.participant)' mat-icon-button  type="button"
             (click)="modifier(element)" matTooltip="{{ 'Modifier une sortie' }}">
             <mat-icon class="edit-icon">edit</mat-icon>
           </button>
-          <button *ngIf='isOrganizer(element.participant)' mat-icon-button type="button"
-            (click)="supprimer(element)" matTooltip="{{ 'Supprimer une sortie' }}">
+          <button *ngIf='isOrganizer(element.participant) && isOpened(element.etat.libelle)' mat-icon-button  type="button"
+            (click)="cloturerSortie(element)" matTooltip="{{ 'Clôturer une sortie' }}">
+            <mat-icon class="lock-icon">lock</mat-icon>
+          </button>
+          <button *ngIf='isOrganizer(element.participant) && isCreated(element.etat.libelle)' mat-icon-button  type="button"
+            (click)="ouvrirSortie(element)" matTooltip="{{ 'Ouvrir la sortie' }}">
+            <mat-icon class="lock-open-icon">lock_open</mat-icon>
+          </button>
+          <button *ngIf='isOrganizer(element.participant) && isCanceled(element.etat.libelle)' mat-icon-button type="button"
+            (click)="supprimer(element)" matTooltip="{{ 'Annuler une sortie' }}">
             <mat-icon class="delete-icon">delete</mat-icon>
           </button>
         </td>

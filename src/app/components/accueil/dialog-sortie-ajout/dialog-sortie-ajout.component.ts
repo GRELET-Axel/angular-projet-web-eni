@@ -56,8 +56,9 @@ ajoutSortie(){
     let dateLimitFormated = this.datePipe.transform(sortieValue.limitDate, 'Y-M-d')
     let userId = this.tokenStorageService.getUser()
     let organizerIri = '/api/participants/'+parseInt(userId)
+    let etatIri = '/api/etats/1'
     if(dateDebutFormated != null && dateLimitFormated != null){
-      this.sortieService.addSortie(sortieValue.nom, dateDebutFormated, sortieValue.duree, dateLimitFormated, parseInt(sortieValue.nbInscritMax), sortieValue.infoSortie, campusIri, organizerIri).subscribe({
+      this.sortieService.addSortie(sortieValue.nom, dateDebutFormated, sortieValue.duree, dateLimitFormated, parseInt(sortieValue.nbInscritMax), sortieValue.infoSortie, campusIri, organizerIri, etatIri).subscribe({
         next:(value)=>{
             this.dialogRef.close('add');  
             window.location.reload()

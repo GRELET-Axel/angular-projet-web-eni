@@ -89,7 +89,7 @@ export class AccueilComponent implements OnInit {
         value => {
           this.sorties = value
           this.dataSource.data = this.sorties;
-          // console.log(this.sorties)
+          console.log(this.sorties)
         })
 }
 
@@ -106,6 +106,54 @@ isParticipant(participants: Array<any>) : boolean
     });
   }
     return isSub;
+}
+
+isCanceled(etat: string){
+  let etatInvalid = ['Annulée'];
+  if(!etatInvalid.includes(etat)){
+    return true
+  }
+  return false
+}
+isClosed(etat: string){
+  let etatInvalid = ['Clôturée'];
+  if(!etatInvalid.includes(etat)){
+    return true
+  }
+  return false
+}
+
+isCreated(etat: string){
+  let etatInvalid = ['Créée'];
+  if(etatInvalid.includes(etat)){
+    return true
+  }
+  return false
+}
+
+isOpened(etat: string){
+  let etatInvalid = ['Ouverte'];
+  if(etatInvalid.includes(etat)){
+    return true
+  }
+  return false
+}
+
+isDone(etat: string){
+  let etatInvalid = ['Annulée','Clôturée'];
+  if(!etatInvalid.includes(etat)){
+    return true
+  }
+  return false
+}
+
+
+isValidEtat(etat: string){
+  let etatInvalid = ['Clôturée','Activité en cours','Passée','Annulée','Créée'];
+  if(!etatInvalid.includes(etat)){
+    return true
+  }
+  return false
 }
 
 isOrganizer(participant: Participant) : boolean
@@ -139,6 +187,28 @@ isAdmin(){
     return true
   }
   return false
+}
+
+ouvrirSortie(sortie: Sortie){
+  let sortieId = sortie.id
+  let iriEtat = '/api/etats/2'
+  this.sortieService.ouvrirSortie(sortieId,iriEtat)
+ .pipe(first())
+ .subscribe(
+   value => {
+    window.location.reload();
+   })
+}
+
+cloturerSortie(sortie: Sortie){
+  let sortieId = sortie.id
+  let iriEtat = '/api/etats/3'
+  this.sortieService.ouvrirSortie(sortieId,iriEtat)
+ .pipe(first())
+ .subscribe(
+   value => {
+    window.location.reload();
+   })
 }
 
 desister(sortie: Sortie) {

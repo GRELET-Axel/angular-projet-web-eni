@@ -40,3 +40,17 @@ table{width: 100%}
 .visibility-icon svg{
     fill: rgb(255, 212, 133);
 }
+
+.lock-icon{
+    color: grey;
+}
+.lock-icon svg{
+    fill: grey;
+}
+
+.lock-open-icon{
+    color: green;
+}
+.lock-open-icon svg{
+    fill: green;
+}
