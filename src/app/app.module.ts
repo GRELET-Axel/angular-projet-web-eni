@@ -27,6 +27,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { AfficherSortieComponent } from './components/afficher-sortie/afficher-sortie.component';
+import { ListeParticipantsSortieComponent } from './components/afficher-sortie/liste-participants-sortie/liste-participants-sortie.component';
 
 
 
@@ -34,6 +35,7 @@ import { AfficherSortieComponent } from './components/afficher-sortie/afficher-s
   declarations: [
     AppComponent,
     AfficherSortieComponent,
+    ListeParticipantsSortieComponent,
   ],
   imports: [
     BrowserModule,

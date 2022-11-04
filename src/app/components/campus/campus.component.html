@@ -12,8 +12,8 @@
   <mat-label style="font-weight: bold;">Filtrer les campus :</mat-label>
   <input style="border: solid 1px;width: 5%;margin-top: 1rem;margin-left: 2rem" matInput (keyup)="applyFilter($event)" #input>
 
-  <table id="tableCampusList" mat-table [dataSource]="dataSource" matSort matSortActive="nomCampus" matSortDirection="asc">
-    <ng-container matColumnDef='nomCampus'>
+  <table id="tableCampusList" mat-table [dataSource]="dataSource" matSort matSortActive="nom" matSortDirection="asc">
+    <ng-container matColumnDef='nom'>
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20"> {{'Nom du campus'}} </th> 
       <td mat-cell id="mcenomCampus" *matCellDef="let element"> {{element.nom}} </td>
     </ng-container>
