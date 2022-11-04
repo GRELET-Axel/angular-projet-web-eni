@@ -16,6 +16,8 @@ import { AuthService } from '../../../_services/auth/auth.service';
 import { DialogSortieAjoutComponent } from './dialog-sortie-ajout/dialog-sortie-ajout.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSortieModifComponent } from './dialog-sortie-modif/dialog-sortie-modif.component';
+import { Campus } from '../../models/Campus';
+import { CampusService } from '../../../_services/campus/campus.service';
 
 @Component({
   selector: 'app-accueil',
@@ -39,10 +41,14 @@ export class AccueilComponent implements OnInit {
   public sortie_id : number = 0;
   sortFunction: ((data: Sortie[], sort: MatSort) => Sortie[]) | undefined;
   titre = '';
+  campuses: Campus[] = [];
 
-  @ViewChild(MatSort) sort: MatSort | undefined;
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-  
+  // @ViewChild(MatSort) sort: MatSort | undefined;
+  // @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatSort)
+  sort: MatSort = new MatSort;
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
   constructor(
 
     private router: Router,
@@ -50,7 +56,8 @@ export class AccueilComponent implements OnInit {
     private profilService: ProfilService,
     public authService: AuthService,
     private tokenStorageService: TokenStorageService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private campusService: CampusService
     ) { 
       this.authService.isLoggedIn.subscribe(value=>{
         this.isLogged = value
@@ -69,7 +76,11 @@ export class AccueilComponent implements OnInit {
       this.roles = JSON.parse(tokenDecoded).roles
     }
     
-
+    this.campusService.getCampuss()
+      .subscribe(
+        (value: any) => {
+          this.campuses = value
+        });
     const user_id = this.tokenStorageService.getUser();
     const date = new Date();
     this.currentDateFormated = date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear();
@@ -90,6 +101,8 @@ export class AccueilComponent implements OnInit {
         value => {
           this.sorties = value
           this.dataSource.data = this.sorties;
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
           // console.log(this.sorties)
         })
 }
@@ -239,7 +252,17 @@ annuler(sortie: Sortie) {
 }
 
 
-
+refreshListByCampus(campus_id: number){
+  if(campus_id !== 0){
+    this.dataSource.data = []
+    this.sorties.forEach((value) =>{
+      if(value.campus.id === campus_id){
+        this.dataSource.data.push(value);
+      }
+    })
+    this.dataSource.paginator = this.paginator;
+  }
+}
 
 
 

@@ -5,17 +5,29 @@
   <p>Participant : {{ nameUser != "."?nameUser:'noName' }}</p>
 </div>
 </div>
-<div class="liste-page" >
+<div class="liste-page">
     <div fxLayout="row nowrap" fxLayoutAlign="center center" class="btn-ajouter">
       <button id="create-sortie" type="button" mat-raised-button class="btn-hover" (click)="ajouter()">
         <mat-icon class="size-14">library_add</mat-icon>
         {{ 'Ajouter une Sortie' }}
       </button>
     </div>
-    <mat-label>Filter les sorties</mat-label>
-    <input matInput (keyup)="applyFilter($event)" #input>
-  
-    <table id="listSortie" mat-table [dataSource]="dataSource" matSort matSortActive="nomSortie" matSortDirection="asc">
+    <div>
+    <mat-label style="font-weight: bold;">Filtrer les sorties</mat-label>
+    <input style="border: solid 1px;width: 5%;margin-top: 1rem;margin-left: 2rem" matInput (keyup)="applyFilter($event)" #input>
+    </div>
+    <div style="margin-left: 2rem">
+    <mat-form-field appearance="outline">
+      <mat-label>Campus associé</mat-label>
+      <mat-select (selectionChange)="refreshListByCampus($event.value)">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let campus of campuses" [value]="campus.id">{{campus.nom}}</mat-option>
+      </mat-select>
+      <mat-hint></mat-hint>
+      <!-- <mat-error *ngIf="creerSortieForm.invalid">Le campus de la sortie est obligatoire</mat-error> -->
+    </mat-form-field>
+    </div>
+    <table id="listSortie" mat-table [dataSource]="dataSource" matSort matSortActive="nomSortie,dateSortie" matSortDirection="asc">
       <ng-container matColumnDef='nomSortie'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">Nom de la sortie</th> 
         <td mat-cell id="mcenomSortie" *matCellDef="let element"> {{element.nom}} </td>
