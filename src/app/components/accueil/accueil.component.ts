@@ -45,8 +45,8 @@ export class AccueilComponent implements OnInit {
   sortFunction: ((data: Sortie[], sort: MatSort) => Sortie[]) | undefined;
   titre = '';
   campuses: Campus[] = [];
-
-
+  selectStatus = '';
+  selectCampus = '';
   // @ViewChild(MatSort) sort: MatSort | undefined;
   // @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort)
@@ -301,6 +301,12 @@ ajouter() {
   });
 }
 
+resetCampus() {
+  this.selectCampus = '';
+}
+resetEtat() {
+  this.selectCampus = '';
+}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

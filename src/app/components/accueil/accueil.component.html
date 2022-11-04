@@ -12,8 +12,7 @@
         {{ 'Ajouter une Sortie' }}
       </button>
     </div>
- <div>
-  
+  <div style="margin-top: 2rem">
     <mat-label style="font-weight: bold; text-align: right;  display: inline-block;
     width: 150px;">Filtrer les sorties :</mat-label>
     <!-- <input style="border: solid 1px;width: 5%;margin-top: 1rem;margin-left: 2rem" matInput (keyup)="applyFilter($event)" #input> -->
@@ -21,13 +20,12 @@
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
+    margin-bottom: 2rem;
     text-align: right;
     background-color: white;   
     transition: width 0.4s ease-in-out;" matInput (keyup)="applyFilter($event)" #input> 
-    
-  
 
-      <mat-form-field  style="margin-left: 20%"  appearance="outline">
+      <mat-form-field  style="margin-left: 20%" [(ngModel)]="selectStatus"  appearance="outline">
         <mat-label>status associé</mat-label>
         <mat-select (selectionChange)="refreshListByStatus($event.value)">
             <mat-option>None</mat-option>
@@ -37,7 +35,7 @@
         <!-- <mat-error *ngIf="creerSortieForm.invalid">Le campus de la sortie est obligatoire</mat-error> -->
       </mat-form-field>
       
-    <mat-form-field style="margin-left: 2rem"  appearance="outline">
+    <mat-form-field style="margin-left: 2rem" [(ngModel)]="selectCampus"  appearance="outline">
       <mat-label>Campus associé</mat-label>
       <mat-select (selectionChange)="refreshListByCampus($event.value)">
           <mat-option>None</mat-option>
@@ -46,7 +44,6 @@
       <mat-hint></mat-hint>
       <!-- <mat-error *ngIf="creerSortieForm.invalid">Le campus de la sortie est obligatoire</mat-error> -->
     </mat-form-field>
-    
   </div>
     <table id="listSortie" mat-table [dataSource]="dataSource" matSort matSortActive="nomSortie,dateSortie" matSortDirection="asc">
       <ng-container matColumnDef='nomSortie'>
