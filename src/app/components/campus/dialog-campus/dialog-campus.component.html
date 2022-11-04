@@ -4,7 +4,7 @@
         <!--Inputs-->
         <mat-form-field appearance="outline">
             <mat-label>Nom du campus</mat-label>
-            <input matInput formControlName="nom" placeholder="Nom de la ville">
+            <input matInput formControlName="nom" placeholder="Nom du campus">
             <mat-hint></mat-hint>
             <mat-error *ngIf="creerCampusForm.invalid">Le nom du campus est obligatoire</mat-error>
         </mat-form-field>
@@ -12,6 +12,6 @@
 </div>
 <!--Boutons-->
 <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="accent" [disabled]="!creerCampusForm.dirty || !creerCampusForm.valid" (click)="ajouterVille()">Ajouter</button>
+    <button mat-raised-button color="accent" [disabled]="!creerCampusForm.dirty || !creerCampusForm.valid" (click)="ajouterCampus()">Ajouter</button>
     <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
 </div>

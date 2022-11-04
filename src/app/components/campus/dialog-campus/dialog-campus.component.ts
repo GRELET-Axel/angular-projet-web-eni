@@ -31,11 +31,13 @@ export class DialogCampusComponent implements OnInit {
       })
   }
 
-  ajouterVille():void{
+  ajouterCampus():void{
       if (this.creerCampusForm.valid) {
           this.creerCampusForm.value.id = this.getCampusId;
-          let campuss:any = this.creerCampusForm.value;  
-          this.campusService.addCampus(this.campus.nom).subscribe({
+          let campuss = this.creerCampusForm.value;  
+          this.campus = campuss
+          console.log(campuss)
+          this.campusService.addCampus(campuss.nom).subscribe({
               next:()=>{
                   this.dialogRef.close('add');  
               },
