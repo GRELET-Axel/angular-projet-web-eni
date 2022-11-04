@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { Sortie } from 'src/app/models/Sortie';
 import { AuthService } from 'src/_services/auth/auth.service';
 import { SortieService } from 'src/_services/sortie/sortie.service';
@@ -11,13 +13,13 @@ import { AccueilComponent } from '../accueil/accueil.component';
 })
 export class AfficherSortieComponent implements OnInit {
 
-
   sortie!: Sortie;
   
   constructor(
     
     private sortieService: SortieService,
     public authService: AuthService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {    

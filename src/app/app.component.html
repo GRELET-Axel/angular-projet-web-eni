@@ -52,7 +52,7 @@
   <ng-container mat-drawer-content>
     <mat-toolbar color="primary">
   
-      <mat-icon> directions_walk</mat-icon>
+      <mat-icon [routerLink]="'/'"> directions_walk</mat-icon>
       <div class="ml-auto"></div>
       <ng-container *ngIf="isLogged">
         <ng-container *ngTemplateOutlet="nav_content"></ng-container>

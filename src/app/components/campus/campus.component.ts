@@ -19,7 +19,7 @@ import { TokenStorageService } from '../../../_services/auth/token-storage.servi
   styleUrls: ['./campus.component.css']
 })
 export class CampusComponent implements OnInit {
-  public displayedColumns = ['nomCampus', 'actions'];
+  public displayedColumns = ['nom', 'actions'];
   campuss: Campus[] = [];
   campus !: Campus;
  
