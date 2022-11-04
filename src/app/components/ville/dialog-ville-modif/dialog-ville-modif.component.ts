@@ -36,17 +36,14 @@ export class DialogVilleModifComponent implements OnInit {
       if(this.modifierVilleForm.valid){
         let ville: Ville = this.modifierVilleForm.value;  
           ville.id = this.editData.id;
-          console.log(ville);
-          this.villeService.updateVille(ville.id, ville.nom, ville.codePostal).subscribe({
+          this.villeService.updateVille(ville.id, ville.nom, Number(ville.codePostal)).subscribe({
           next:()=>{
-              console.log(ville)
               this.dialogRef.close('mod');  
           },
           error:()=>{
               this.dialogRef.close('mod');
           }
           });
-          console.log(ville)
       }
   }
 
