@@ -12,16 +12,22 @@
         {{ 'Ajouter une Sortie' }}
       </button>
     </div>
-    <div>
-    <mat-label style="font-weight: bold;">Filtrer les sorties</mat-label>
-    <input style="border: solid 1px;width: 5%;margin-top: 1rem;margin-left: 2rem" matInput (keyup)="applyFilter($event)" #input>
-  </div>
+ <div>
+  
+    <mat-label style="font-weight: bold; text-align: right;  display: inline-block;
+    width: 150px;">Filtrer les sorties :</mat-label>
+    <!-- <input style="border: solid 1px;width: 5%;margin-top: 1rem;margin-left: 2rem" matInput (keyup)="applyFilter($event)" #input> -->
+    <input style="width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    text-align: right;
+    background-color: white;   
+    transition: width 0.4s ease-in-out;" matInput (keyup)="applyFilter($event)" #input> 
+    
+  
 
-
-
-  <!-- test -->
-    <div style="margin-left: 2rem">
-      <mat-form-field appearance="outline">
+      <mat-form-field  style="margin-left: 20%"  appearance="outline">
         <mat-label>status associé</mat-label>
         <mat-select (selectionChange)="refreshListByStatus($event.value)">
             <mat-option>None</mat-option>
@@ -30,12 +36,8 @@
         <mat-hint></mat-hint>
         <!-- <mat-error *ngIf="creerSortieForm.invalid">Le campus de la sortie est obligatoire</mat-error> -->
       </mat-form-field>
-      </div>
-
-<!-- test -->
-
-    <div style="margin-left: 2rem">
-    <mat-form-field appearance="outline">
+      
+    <mat-form-field style="margin-left: 2rem"  appearance="outline">
       <mat-label>Campus associé</mat-label>
       <mat-select (selectionChange)="refreshListByCampus($event.value)">
           <mat-option>None</mat-option>
@@ -44,7 +46,8 @@
       <mat-hint></mat-hint>
       <!-- <mat-error *ngIf="creerSortieForm.invalid">Le campus de la sortie est obligatoire</mat-error> -->
     </mat-form-field>
-    </div>
+    
+  </div>
     <table id="listSortie" mat-table [dataSource]="dataSource" matSort matSortActive="nomSortie,dateSortie" matSortDirection="asc">
       <ng-container matColumnDef='nomSortie'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="colonne-20">Nom de la sortie</th> 

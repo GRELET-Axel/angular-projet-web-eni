@@ -18,7 +18,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogSortieModifComponent } from './dialog-sortie-modif/dialog-sortie-modif.component';
 import { Campus } from '../../models/Campus';
 import { CampusService } from '../../../_services/campus/campus.service';
-import { Status } from 'src/app/models/status';
 import { Etat } from 'src/app/models/Etat';
 
 @Component({
