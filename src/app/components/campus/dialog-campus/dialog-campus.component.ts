@@ -31,7 +31,7 @@ export class DialogCampusComponent implements OnInit {
       })
   }
 
-  ajouterVille():void{
+  ajouterCampus():void{
       if (this.creerCampusForm.valid) {
           this.creerCampusForm.value.id = this.getCampusId;
           let campuss:any = this.creerCampusForm.value;  

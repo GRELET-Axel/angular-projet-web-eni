@@ -22,11 +22,11 @@ export class DialogCampusModifComponent implements OnInit {
   
   ngOnInit(): void {
       this.modifierCampusForm = this.formBuilder.group({
-          nomCampus: ['', Validators.required],
+        nom: ['', Validators.required],
       });
 
       if(this.editData){
-          this.modifierCampusForm.controls['nomCampus'].setValue(this.editData.nom);
+          this.modifierCampusForm.controls['nom'].setValue(this.editData.nom);
       }
   }
 
