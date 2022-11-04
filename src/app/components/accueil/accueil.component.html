@@ -25,7 +25,7 @@
     background-color: white;   
     transition: width 0.4s ease-in-out;" matInput (keyup)="applyFilter($event)" #input> 
 
-      <mat-form-field  style="margin-left: 20%" [(ngModel)]="selectStatus"  appearance="outline">
+      <mat-form-field  style="margin-left: 20%"  appearance="outline">
         <mat-label>status associé</mat-label>
         <mat-select (selectionChange)="refreshListByStatus($event.value)">
             <mat-option>None</mat-option>
@@ -35,7 +35,7 @@
         <!-- <mat-error *ngIf="creerSortieForm.invalid">Le campus de la sortie est obligatoire</mat-error> -->
       </mat-form-field>
       
-    <mat-form-field style="margin-left: 2rem" [(ngModel)]="selectCampus"  appearance="outline">
+    <mat-form-field style="margin-left: 2rem"  appearance="outline">
       <mat-label>Campus associé</mat-label>
       <mat-select (selectionChange)="refreshListByCampus($event.value)">
           <mat-option>None</mat-option>
