@@ -33,7 +33,6 @@ export class DialogSortieModifComponent implements OnInit {
       organisateur: ['', [Validators.required]],
   })
 
-  console.log(this.currentSortie)
 
   if(this.currentSortie){
       this.modifierSortieForm.controls['nom'].setValue(this.currentSortie.nom);
@@ -42,7 +41,7 @@ export class DialogSortieModifComponent implements OnInit {
       this.modifierSortieForm.controls['limitDate'].setValue(this.currentSortie.dateLimiteInscription);
       this.modifierSortieForm.controls['nbInscritMax'].setValue(this.currentSortie.nbInscriptionsMax);
       this.modifierSortieForm.controls['infoSortie'].setValue(this.currentSortie.infosSortie);
-      this.modifierSortieForm.controls['campus'].setValue(this.currentSortie.campus);
+      this.modifierSortieForm.controls['campus'].setValue(this.currentSortie.campus.nom);
       this.modifierSortieForm.controls['lieu'].setValue(this.currentSortie.lieu);
       this.modifierSortieForm.controls['organisateur'].setValue(this.currentSortie.organizer);
   }
