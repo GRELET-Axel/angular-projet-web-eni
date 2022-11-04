@@ -15,7 +15,25 @@
     <div>
     <mat-label style="font-weight: bold;">Filtrer les sorties</mat-label>
     <input style="border: solid 1px;width: 5%;margin-top: 1rem;margin-left: 2rem" matInput (keyup)="applyFilter($event)" #input>
-    </div>
+  </div>
+
+
+
+  <!-- test -->
+    <div style="margin-left: 2rem">
+      <mat-form-field appearance="outline">
+        <mat-label>status associé</mat-label>
+        <mat-select (selectionChange)="refreshListByStatus($event.value)">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let etats of etat" [value]="etats.id">{{etats.libelle}}</mat-option>
+        </mat-select>
+        <mat-hint></mat-hint>
+        <!-- <mat-error *ngIf="creerSortieForm.invalid">Le campus de la sortie est obligatoire</mat-error> -->
+      </mat-form-field>
+      </div>
+
+<!-- test -->
+
     <div style="margin-left: 2rem">
     <mat-form-field appearance="outline">
       <mat-label>Campus associé</mat-label>

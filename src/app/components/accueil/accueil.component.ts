@@ -18,6 +18,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogSortieModifComponent } from './dialog-sortie-modif/dialog-sortie-modif.component';
 import { Campus } from '../../models/Campus';
 import { CampusService } from '../../../_services/campus/campus.service';
+import { Status } from 'src/app/models/status';
+import { Etat } from 'src/app/models/Etat';
 
 @Component({
   selector: 'app-accueil',
@@ -30,6 +32,8 @@ export class AccueilComponent implements OnInit {
   isLoggedInhere$: BehaviorSubject<boolean> | undefined;
   public displayedColumns = ['nomSortie', 'dateSortie', 'dateCloture', 'inscritPlace', 'etat', 'inscrit', 'organisateur', 'actions'];
   sorties: Sortie[] = [];
+  etat: Etat[] = [{id: 1, libelle: "Créée" },{id: 2, libelle: "Ouverte" },{id: 3, libelle: "Clôturée" }, {id: 4, libelle: "Activité en cours" }, {id: 5, libelle: "Passée"}, {id: 6, libelle: "Annulée" }]
+  
   currentDateFormated: string = "";
   nameUser: string = "";
   currentUserId: number = 0;
@@ -42,6 +46,7 @@ export class AccueilComponent implements OnInit {
   sortFunction: ((data: Sortie[], sort: MatSort) => Sortie[]) | undefined;
   titre = '';
   campuses: Campus[] = [];
+
 
   // @ViewChild(MatSort) sort: MatSort | undefined;
   // @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
@@ -263,7 +268,17 @@ refreshListByCampus(campus_id: number){
     this.dataSource.paginator = this.paginator;
   }
 }
-
+refreshListByStatus(status_id: number){
+  if(status_id !== 0){
+    this.dataSource.data = []
+    this.sorties.forEach((value) =>{
+      if(value.etat.id === status_id){
+        this.dataSource.data.push(value);
+      }
+    })
+    this.dataSource.paginator = this.paginator;
+  }
+}
 
 
 modifier(sortie: Sortie) {
