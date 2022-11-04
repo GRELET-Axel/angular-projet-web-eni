@@ -31,7 +31,7 @@ const httpOptions = {
   
 
   public addCampus(nom: string): Observable<Campus> {
-  return this.httpClient.post<Campus>('https://localhost:8000/api/campuses/',{
+  return this.httpClient.post<Campus>('https://localhost:8000/api/campuses',{
     nom
   }, httpOptions);
   }

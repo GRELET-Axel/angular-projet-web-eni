@@ -35,7 +35,7 @@ export class DialogCampusComponent implements OnInit {
       if (this.creerCampusForm.valid) {
           this.creerCampusForm.value.id = this.getCampusId;
           let campuss:any = this.creerCampusForm.value;  
-          this.campusService.addCampus(this.campus.nom).subscribe({
+          this.campusService.addCampus(campuss.nom).subscribe({
               next:()=>{
                   this.dialogRef.close('add');  
               },
